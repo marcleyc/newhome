@@ -101,7 +101,7 @@
         {
           item: 0,
           freguesia: '',
-          valor: "000.000",
+          valor: "000",
           quartos: 0,
           banheiro: 3,
           m2: 0,
@@ -109,7 +109,7 @@
           eficiencia: 'V',
           imobiliaria: 'Osvaldo 961.656.136 ref.31937145',
           foto:'https://xrei.com/images/mapa-regioes-de-portugal-scaled.jpg',
-          link:'',
+          link:'index.html',
           descricao:'',
         },            
         
