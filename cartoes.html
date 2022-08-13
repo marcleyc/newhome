@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
+ 
+</head>
+<body>
+
+ <nav class="navbar">
+     <div class="container">
+         <div class="logo"></div>
+         <ul>
+             <li>World</li>
+             <li>Sports</li>
+             <li>Opinion</li>
+             <li><strong>Lifestyle</strong></li>
+             <li>Business</li>
+             <li>Culture</li>
+             <li>Fasion</li>
+             <li>Tech</li>
+         </ul>
+         <span class="icon">
+           <i class="ion-ionic" style='color: black; background: black;'></i>
+         </span>
+     </div>
+ </nav>
+
+ <section class="section">
+     <div class="container">
+         <div style='margin: 40px 10px 40px'>
+             <h1>Lifestyle.</h1>
+             <p>The latest and best lifestyle articles selected<br/>
+                 by our editorial office.
+             </p>
+         </div>
+     </div>
+
+     <div class="cardContainer" id="card-container">
+
+     </div>
+ </section>
+
+ <footer class="footer">
+     <div class="content has-text-centered">
+         <p>
+             <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+             is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+         </p>
+     </div>
+ </footer>
+
+ <script type="text/javascript">
+
+const black = 'rgba(23,35, 50, 1)'
+const brown = 'rgba(205,164, 133, 1)'
+const greenblue = 'rgba(62,171, 201, 1)'
+const pink = 'rgba(254,156, 161, 1)'
+const blue = 'rgba(98,189, 254, 1)'
+
+
+const data = [
+    {
+        topic: 'Food',
+        title: 'Wake Up and Smell the Coffee',
+        price: '$0.90',
+        color: 'green',
+        overlay: 'green',
+        img: 'https://source.unsplash.com/featured/?coffee'
+    },
+    {
+        topic: 'Architecture',
+        title: 'The Brand New NASA Office',
+        price: '$0.19',
+        color: 'black',
+        overlay: 'black',
+        img: 'https://source.unsplash.com/featured/?office'
+    },
+    {
+        topic: 'Travel',
+        title: 'Experience the Saharan Sands',
+        price: '$2.29',
+        color: 'brown',
+        overlay: 'brown',
+        img:'https://source.unsplash.com/featured/?desert'
+    },
+    {
+        topic: 'Interior',
+        title: '9 Air-Cleaning Plants Your Home Needs',
+        price: '$0.09',
+        color: 'greenblue',
+        overlay: 'greenblue',
+        img: 'https://source.unsplash.com/featured/?plants'
+    },
+    
+];
+
+const cardText = document.querySelector('#card-container');
+
+let html = "";
+for (i of data) {
+    html = html + `
+    <div class="cards" style="background-color:${i.color}; background-image:url(${i.img}); background-size:cover;">
+    <div class="text">
+        <h3 style="background-color:${i.overlay};">${i.topic}</h3>
+        <h4 style="background-color:${i.overlay};">${i.title}</h4>
+    </div>
+    <button>Read for ${i.price}</button>
+</div>
+    `  
+}
+
+cardText.innerHTML = html
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>
+        How to change the href attribute
+        dynamically using JavaScript?
+    </title>
+</head>
+  
+<body style="text-align:center;">
+      
+    <h1 style="color:green">
+        GeeksforGeeks
+    </h1>
+      
+    <h3>
+        Change the href attribute value<br>
+        dynamically using JavaScript
+    </h3>
+      
+    <a href="https://www.google.com" id="myLink">
+        Go to Google
+    </a>
+      
+    <br><br>
+      
+    <button onclick="myFunction()">
+        Click Here!
+    </button>
+      
+    <script type="text/javascript">
+        function myFunction() { 
+            document.getElementById('myLink').href ="https://www.geeksforgeeks.org";
+            document.getElementById("myLink").textContent = "Go to GeeksforGeeks";
+        }
+    </script>
+</body>
+  
+</html>
