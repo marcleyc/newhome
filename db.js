@@ -111,7 +111,35 @@
           foto:'./img/8.jpg',
           link:'https://www.idealista.pt/imovel/32092264/',
           descricao:'500m do metro',
-        },   
+        },
+        {
+          item: 9,
+          freguesia: 'Algarve, Loulé, Alte',
+          valor: "550.000",
+          quartos: 4,
+          banheiro: 4,
+          m2: 153,
+          garagem: 'sim',
+          eficiencia: 'A',
+          imobiliaria: 'Era 289.176.754 ref.338220066',
+          foto:'./img/9.jpg',
+          link:'https://www.idealista.pt/imovel/32046885/',
+          descricao:'',
+        },
+        {
+          item: 10,
+          freguesia: 'Algarve, Loulé, Alte',
+          valor: "550.000",
+          quartos: 4,
+          banheiro: 4,
+          m2: 135,
+          garagem: 'sim',
+          eficiencia: 'F',
+          imobiliaria: 'Turtle Homes 289.176.545',
+          foto:'./img/10.jpg',
+          link:'https://www.idealista.pt/imovel/31896537/',
+          descricao:'',
+        },     
         {
           item: 0,
           freguesia: '',
@@ -163,4 +191,10 @@
        };
 
        //inserir();
+
+
+       // https://www.idealista.pt/imovel/32046885/
+       // https://www.idealista.pt/imovel/31896537/foto/23/
+
+
        
