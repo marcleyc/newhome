@@ -196,20 +196,7 @@
           link:'https://www.idealista.pt/imovel/31991023/',
           descricao:'',
         },               
-        {
-          item: 0,
-          freguesia: '',
-          valor: "000",
-          quartos: 0,
-          banheiro: 3,
-          m2: 0,
-          garagem: 'sim',
-          eficiencia: 'V',
-          imobiliaria: 'Infante & Riu ref.CAS_7599',
-          foto:'https://xrei.com/images/mapa-regioes-de-portugal-scaled.jpg',
-          link:'index.html',
-          descricao:'',
-        },            
+                    
         
   ];
 
