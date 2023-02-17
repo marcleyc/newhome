@@ -55,4 +55,12 @@ var aptos = [
     link:"https://www.idealista.pt/imovel/32034820/",
     obs:"", end:"",
     },
+    {
+    id:9, local:"Resort Amendoeira Golf Club - Alcantarilha e Pera", valor:"520.000", tipologia:"T3", ee:"", situacao:"agendado",
+    imobiliaria:"LUXIMOS Christie’s 223.278.654 ref.1CS01231-fe1l",
+    comissao:"2%", agendamento:"21/02/2023 às ",
+    link:"https://supercasa.pt/venda-moradia-t4-loule/i216922",
+    obs:"email de confirmação recebido", end:"",
+    },
 ]
+
