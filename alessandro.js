@@ -48,4 +48,11 @@ var aptos = [
     link:"https://www.idealista.pt/imovel/32453009/",
     obs:"", end:"",
     },
+    {
+    id:8, local:"Lagoa e Carvoeiro", valor:675000, tipologia:"T4", ee:"B", situacao:"agendado",
+    imobiliaria:"Immo Algarve - Cecília ref:A-317 961.243.308",
+    comissao:"", agendamento:"21/02/2023 às ",
+    link:"https://www.idealista.pt/imovel/32034820/",
+    obs:"", end:"",
+    },
 ]
