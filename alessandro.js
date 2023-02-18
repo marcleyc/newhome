@@ -23,7 +23,7 @@ var aptos = [
     {
     id:4, local:"", valor:"510.000", tipologia:"T3", ee:"A", situacao:"agendado",
     imobiliaria:"top imoveis - Alexandrina Martins 289.176.289 ref:APA_879",
-    comissao:"30 40 ou 50%", agendamento:"20/02/2023 às 15hs",
+    comissao:"30 40 ou 50%", agendamento:"confirmado 20/02/2023 às 15hs",
     link:"https://www.idealista.pt/imovel/32227787/",
     obs:"", end:"",
     },
@@ -49,9 +49,9 @@ var aptos = [
     obs:"", end:"",
     },
     {
-    id:8, local:"Lagoa e Carvoeiro", valor:"675.000", tipologia:"T4", ee:"B", situacao:"agendado",
-    imobiliaria:"Immo Algarve - Cecília ref:A-317 961.243.308",
-    comissao:"", agendamento:"21/02/2023 às ",
+    id:8, local:"Lagoa e Carvoeiro Edf Atrium Lagoa", valor:"675.000", tipologia:"T4", ee:"B", situacao:"agendado",
+    imobiliaria:"Palm Propiets Immo Algarve - Monika 927.429.044 - ref:A-317 961.243.308",
+    comissao:"", agendamento:"confirmado 21/02/2023 às 10h30",
     link:"https://www.idealista.pt/imovel/32034820/",
     obs:"", end:"",
     },
