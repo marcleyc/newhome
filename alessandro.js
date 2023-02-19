@@ -62,5 +62,12 @@ var aptos = [
     link:"https://www.luximos.pt/pt/imovel/1CS01231-FE1I/venda-de-apartamento-contemporaneo-em-silves-algarve",
     obs:"email de confirmação recebido", end:"", cor:"light",
     },
+    {
+        id:10, local:"Cond Palmyra - Quarteira", valor:"517.500", tipologia:"T3", ee:"", situacao:"aguardadndo retorno",
+        imobiliaria:"La Real State 289 586 983 / 963 980 978 " ,
+        comissao:"", agendamento:"",
+        link:"https://www.luximos.pt/pt/imovel/1CS01231-FE1I/venda-de-apartamento-contemporaneo-em-silves-algarve",
+        obs:"email de confirmação recebido", end:"", cor:"warning",
+    },
 ]
 
