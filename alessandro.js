@@ -67,7 +67,14 @@ var aptos = [
         imobiliaria:"La Real State 289 586 983 / 963 980 978 " ,
         comissao:"", agendamento:"",
         link:"https://www.luximos.pt/pt/imovel/1CS01231-FE1I/venda-de-apartamento-contemporaneo-em-silves-algarve",
-        obs:"email de confirmação recebido", end:"", cor:"warning",
+        obs:"", end:"", cor:"warning",
+    },
+    {
+        id:11, local:"Quarteira", valor:"659.000", tipologia:"T3", ee:"", situacao:"contactar na segunda",
+        imobiliaria:"BUYME PROPERTY ALGARVE  289.985.532" ,
+        comissao:"", agendamento:"",
+        link:"https://supercasa.pt/venda-apartamento-t3-loule/i905547",
+        obs:"", end:"", cor:"warning",
     },
 ]
 
