@@ -48,8 +48,11 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"> <span class="text-success">${i.id}</span> - € ${i.valor} - <span class="text-success">${i.tipologia}</span></h5>
+              <h5 class="card-title"> <span class="text-success">${i.id}</span> - € ${i.valor} - 
+                     <span class="text-success">${i.tipologia}</span> - 
+                     <span class="text-primary">${i.garagem} vagas de garagem</span></h5>
               <div class="d-grid gap-2"> <button class="btn btn-${i.cor}">Situação: ${i.situacao}</button> </div>
+              <p class="card-text text-danger">OBS: ${i.obs} </p>
               <p class="card-text text-danger">Agendamento: ${i.agendamento} </p>
               <p class="card-text">Local: ${i.local} </>
             
