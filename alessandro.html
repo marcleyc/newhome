@@ -50,8 +50,10 @@
             <div class="card-body">
               <h5 class="card-title"> <span class="text-success">${i.id}</span> - € ${i.valor} - 
                      <span class="text-success">${i.tipologia}</span> - 
-                     <button type="button" class="btn btn-outline-primary">garagem ${i.garagem}</button>
-      
+                     <a href="imgAlgarvePlanta/${i.id}.pdf" target="_blank"> 
+                     <button type="button" class="btn btn-outline-${i.planta}">planta</button> 
+                     </a> 
+                     <button type="button" class="btn btn-outline-primary">garagem ${i.garagem}</button>   
               <div class="d-grid gap-2"> <button class="btn btn-${i.cor}">Situação: ${i.situacao}</button> </div>
               <p class="card-text text-danger">OBS: ${i.obs} </p>
               <p class="card-text text-success">Agendamento: ${i.agendamento} </p>
