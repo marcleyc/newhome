@@ -14,11 +14,11 @@ var aptos = [
         obs:"A anunciante não atende", end:"", cor:"warning",
     },
     {
-        id:3, local:"", valor:"670.000€", tipologia:"T3", ee:"B", garagem:"2", situacao:"", 
-        imobiliaria:"Predimed 289.176.565",
-        comissao:"", agendamento: "", 
+        id:3, local:"Portimão / 3 castelos", valor:"670.000€", tipologia:"T3", ee:"B", garagem:"2", situacao:"Disponível / Pronto", 
+        imobiliaria:"Predimed Francisco 289.176.565 - Miguel 961.738.941",
+        comissao:"50%", agendamento: "", 
         link:"https://www.idealista.pt/imovel/31891922/",
-        obs:"", end:"", cor:"primary",
+        obs:"Somente esse apto disponível, aguardando envio da planta", end:"", cor:"primary",
     },
     {
         id:4, local:"Portimão / rua Estrela do mar", valor:"790.000€", tipologia:"T3", ee:"A", garagem:"", situacao:"Disponível / Pronto", 
@@ -60,6 +60,13 @@ var aptos = [
         imobiliaria:"AlgarveHome 289.176.809 ref.APA_173",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32337789/",
+        obs:"", end:"", cor:"light",
+    },
+    {
+        id:10, local:"Portimão / Amparo - Alto do Quintão", valor:"470.000€", tipologia:"T4", ee:"não tem", garagem:"", situacao:"", 
+        imobiliaria:"Springer Properties 289.176.864 ref.SP_1894-1",
+        comissao:"", agendamento: "",
+        link:"https://www.idealista.pt/imovel/31882589/",
         obs:"", end:"", cor:"light",
     },
     {
