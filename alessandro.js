@@ -56,11 +56,11 @@ var aptos = [
         obs:"Aguardando detalhes do apto", end:"", cor:"warning", planta:"primary"
     },
     {
-        id:9, local:"Portimão / beco Padre Arsénio Castro da Silva", valor:"429.000€", tipologia:"T3", ee:"A+", garagem:"1", situacao:"Disponível / Entrega em 3 meses", 
+        id:9, local:"Portimão / Terraços da Cidade - beco Padre Arsénio Castro da Silva", valor:"429.000€", tipologia:"T3", ee:"A+", garagem:"1", situacao:"Disponível / Entrega em 3 meses", 
         imobiliaria:"AlgarveHome 289.176.809 ref.APA_173 João Duarte 937.921.543",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32337789/",
-        obs:"Só tem um imóvel no 9º andar. É fácil estacionar o 2º carro do lado de fora do prédio", end:"", cor:"primary", planta:"warning"
+        obs:"Só tem um imóvel no 9º andar. É fácil estacionar o 2º carro do lado de fora do prédio", end:"", cor:"primary", planta:"primary"
     },
     {
         id:10, local:"Portimão / Amparo - Alto do Quintão", valor:"470.000€", tipologia:"T4", ee:"não tem", garagem:"", situacao:"VENDIDO", 
