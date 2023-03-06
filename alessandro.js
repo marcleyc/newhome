@@ -21,11 +21,11 @@ var aptos = [
         obs:"Somente esse apto disponível, aguardando envio da planta", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:4, local:"Portimão / rua Estrela do mar", valor:"790.000€", tipologia:"T3", ee:"A", garagem:"", situacao:"Disponível / Pronto", 
+        id:4, local:"Portimão / rua Estrela do mar", valor:"790.000€", tipologia:"T3", ee:"A", garagem:"1", situacao:"Disponível / Pronto", 
         imobiliaria:"",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/31045109/",
-        obs:"Não trabalha com imobiliárias", end:"", cor:"danger", planta:"warning",
+        obs:"Emerson Plaza, não trabalha com imobiliárias, não aceita permuta", end:"", cor:"danger", planta:"warning",
     },
     {
         id:5, local:"Portimão / Alto do Quintão", valor:"390.000€", tipologia:"T3", ee:"A", garagem:"", situacao:"VENDIDO", 
@@ -49,11 +49,11 @@ var aptos = [
         obs:"", end:"", cor:"danger", planta:"warning"
     },
     {
-        id:8, local:"Portimão / Amparo - Alto do Quintão", valor:"365.000€", tipologia:"T3", ee:"B", garagem:"", situacao:"Disponível / Pronto", 
+        id:8, local:"Portimão / Amparo - Alto do Quintão", valor:"365.000€", tipologia:"T3", ee:"B", garagem:"2", situacao:"Disponível / Pronto", 
         imobiliaria:"Mimosa - 282.095.848 ref.VA584 Vitor 966.981.803",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/31288387/",
-        obs:"Aguardando detalhes do apto", end:"", cor:"warning", planta:"primary"
+        obs:"Na praça central tem um projeto de paqrque infantil", end:"", cor:"warning", planta:"primary"
     },
     {
         id:9, local:"Portimão / Terraços da Cidade - beco Padre Arsénio Castro da Silva", valor:"429.000€", tipologia:"T3", ee:"A+", garagem:"1", situacao:"Disponível / Entrega em 3 meses", 
