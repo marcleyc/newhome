@@ -4,7 +4,7 @@ var aptos = [
         imobiliaria:"HomeTown ",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/31645293/",
-        obs:"Só o R/C disponível", end:"", cor:"primary", planta:"warning",
+        obs:"Só o R/C disponível", end:"", cor:"primary", planta:"primary",
     },
     {
         id:2, local:"Portimão / Oasis Mar Lt. 1", valor:"625.000€", tipologia:"T3", ee:"", garagem:2, situacao:"aguardando retorno", 
