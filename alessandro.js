@@ -70,6 +70,27 @@ var aptos = [
         obs:"", end:"", cor:"danger", planta:"warning"
     },
     {
+        id:"11", local:"Portimão / Zona Ribeirinha", valor:"590.000", tipologia:"T4", ee:"B", garagem:"3", situacao:"", 
+        imobiliaria:"IAD Miriam Naidu 939.091.652 / 223.278.940 ref.83286",
+        comissao:"", agendamento: "",
+        link:"https://www.idealista.pt/imovel/32261612/",
+        obs:"2010", end:"", cor:"light", planta:"warning"
+    },
+    {
+        id:"12", local:"Portimão", valor:"680.000", tipologia:"T4", ee:"A", garagem:"3", situacao:"", 
+        imobiliaria:"Fastighetbyran 289.176.025 ref.14661-JP1612",
+        comissao:"", agendamento: "",
+        link:"https://www.idealista.pt/imovel/32000318/",
+        obs:"", end:"", cor:"light", planta:"warning"
+    },
+    {
+        id:"13", local:"Portimão", valor:"635.000", tipologia:"T3", ee:"A", garagem:"", situacao:"", 
+        imobiliaria:"Mimosa Properties 282.087.152/912.547.448",
+        comissao:"", agendamento: "",
+        link:"https://www.chave-laranja.com/imovel/apartamento-t3-venda-em-portimaoportimao/19480850",
+        obs:"", end:"", cor:"light", planta:"warning"
+    },
+    {
         id:"mapa", local:"", valor:"", tipologia:"", ee:"", garagem:"", situacao:"", 
         imobiliaria:"",
         comissao:"", agendamento: "",
