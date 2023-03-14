@@ -70,7 +70,7 @@ var aptos = [
         obs:"", end:"", cor:"danger", planta:"warning"
     },
     {
-        id:"11", local:"Portimão / Zona Ribeirinha", valor:"590.000", tipologia:"T4", ee:"B", garagem:"3", situacao:"Imóvel Alugado", 
+        id:"11", local:"Portimão / Zona Ribeirinha", valor:"590.000", tipologia:"T4", ee:"B", garagem:"3", situacao:"ALUGADO", 
         imobiliaria:"IAD Miriam Naidu 939.091.652 / 223.278.940 ref.83286",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32261612/",
