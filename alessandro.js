@@ -70,18 +70,19 @@ var aptos = [
         obs:"", end:"", cor:"danger", planta:"warning"
     },
     {
-        id:"11", local:"Portimão / Zona Ribeirinha", valor:"590.000", tipologia:"T4", ee:"B", garagem:"3", situacao:"", 
+        id:"11", local:"Portimão / Zona Ribeirinha", valor:"590.000", tipologia:"T4", ee:"B", garagem:"3", situacao:"Imóvel Alugado", 
         imobiliaria:"IAD Miriam Naidu 939.091.652 / 223.278.940 ref.83286",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32261612/",
-        obs:"2010", end:"", cor:"light", planta:"warning"
+        obs:"Disponível após o verão", end:"", cor:"primary", planta:"warning"
     },
     {
-        id:"12", local:"Portimão", valor:"680.000", tipologia:"T4", ee:"A", garagem:"3", situacao:"", 
-        imobiliaria:"Fastighetbyran 289.176.025 ref.14661-JP1612",
+        id:"12", local:"Portimão", valor:"680.000", tipologia:"T4", ee:"A", garagem:"3", situacao:"DISPONÍVEL", 
+        imobiliaria:"Jean Andre Paque - 962.866.119",
+        imobiliaria2:"Fastighetbyran 289.176.025 ref.14661-JP1612",
         comissao:"", agendamento: "",
-        link:"https://www.idealista.pt/imovel/32000318/",
-        obs:"", end:"", cor:"light", planta:"warning"
+        link:"https://www.idealista.pt/imovel/32438118/",
+        obs:"", end:"", cor:"primary", planta:"warning"
     },
     {
         id:"13", local:"Portimão", valor:"635.000", tipologia:"T3", ee:"A", garagem:"", situacao:"", 
