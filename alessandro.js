@@ -92,6 +92,20 @@ var aptos = [
         obs:"", end:"", cor:"light", planta:"warning"
     },
     {
+        id:"14", local:"Miguel Bombarda 9", valor:"375.000", tipologia:"T3", ee:"B", garagem:"", situacao:"DISPONÍVEL", 
+        imobiliaria:"K&T Tania Francisco 968.609.725",
+        comissao:"50%", agendamento: "",
+        link:"https://www.idealista.pt/imovel/31637910/",
+        obs:"Só 1 disponível", end:"", cor:"primary", planta:"primary"
+    },
+    {
+        id:"15", local:"", valor:"375.000", tipologia:"T3", ee:"A", garagem:"", situacao:"DISPONÍVEL", 
+        imobiliaria:"RB RevelBliss 289.176.172 ref.2113 ",
+        comissao:"3% total - 50/50% 5625€", agendamento: "20/03 às 15hs",
+        link:"https://www.idealista.pt/imovel/31802732/",
+        obs:"", end:"", cor:"primary", planta:"warning"
+    },
+    {
         id:"mapa", local:"", valor:"", tipologia:"", ee:"", garagem:"", situacao:"", 
         imobiliaria:"",
         comissao:"", agendamento: "",
