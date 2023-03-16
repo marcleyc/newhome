@@ -106,6 +106,20 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"warning"
     },
     {
+        id:"16", local:"urb. Castelos da Rocha", valor:"424.900", tipologia:"T4", ee:"C", garagem:"", situacao:"DISPONÍVEL", 
+        imobiliaria:"ardevillas ref.APT-2842 Tânia Francisco 968.609.725",
+        comissao:"", agendamento: "",
+        link:"https://www.idealista.pt/imovel/32130437/",
+        obs:"", end:"", cor:"primary", planta:"warning"
+    },
+    {
+        id:"17", local:"beco Padre Arsénio Castro da Silva", valor:"429.000", tipologia:"T3", ee:"A+", garagem:"1", situacao:"DISPONÍVEL", 
+        imobiliaria:"AlgarveHome João 937.921.543 ref.APA_173",
+        comissao:"50%", agendamento: "",
+        link:"https://www.idealista.pt/imovel/32337789/",
+        obs:"Vai enviar um vídeo segunda dia 20", end:"", cor:"primary", planta:"warning"
+    },    
+    {
         id:"mapa", local:"", valor:"", tipologia:"", ee:"", garagem:"", situacao:"", 
         imobiliaria:"",
         comissao:"", agendamento: "",
