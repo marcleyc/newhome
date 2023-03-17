@@ -60,7 +60,7 @@ var aptos = [
         imobiliaria:"AlgarveHome 289.176.809 ref.APA_173 João Duarte 937.921.543",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32337789/",
-        obs:"Só tem um imóvel no 9º andar. É fácil estacionar o 2º carro do lado de fora do prédio", end:"", cor:"primary", planta:"primary"
+        obs:"Vai gravar um vídeo dia 20 às 14hs", end:"", cor:"primary", planta:"primary"
     },
     {
         id:10, local:"Portimão / Amparo - Alto do Quintão", valor:"470.000€", tipologia:"T4", ee:"não tem", garagem:"", situacao:"VENDIDO", 
@@ -111,14 +111,7 @@ var aptos = [
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32130437/",
         obs:"", end:"", cor:"primary", planta:"warning"
-    },
-    {
-        id:"17", local:"beco Padre Arsénio Castro da Silva", valor:"429.000", tipologia:"T3", ee:"A+", garagem:"1", situacao:"DISPONÍVEL", 
-        imobiliaria:"AlgarveHome João 937.921.543 ref.APA_173",
-        comissao:"50%", agendamento: "",
-        link:"https://www.idealista.pt/imovel/32337789/",
-        obs:"Vai enviar um vídeo segunda dia 20", end:"", cor:"primary", planta:"warning"
-    },    
+    },   
     {
         id:"mapa", local:"", valor:"", tipologia:"", ee:"", garagem:"", situacao:"", 
         imobiliaria:"",
