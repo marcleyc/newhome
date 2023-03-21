@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue test</title>
+
+</head>
+<body>
+    
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+       <p>{{ message }}</p>
+       <p>{{ dados }}</p> 
+       <li v-for="item in dados">
+        {{ item.id }}-    -{{ item.local }}-    -{{ item.cor }}
+      </li> 
+       <button @click="count++">{{ count }}</button>
+       <button @click="increment">{{ count2 }}</button>
+       <button @click="testClick">consoleLog</button>
+       <button @click="filtra">filtra</button>
+
+    </div>
+
+    <script src="alessandro.js"></script>
+    
+    <script>
+    let itens = this.aptos;
+    itens.filter((item)=>item.cor=="primary");
+       console.log(itens);   
+
+    const { createApp } = Vue
+    createApp({
+        data() 
+        {
+            return {
+            message: 'Hello Vue!',
+            count: 0,
+            count2: 0,
+            dados: itens,
+           }
+        },
+        methods: 
+        {
+           increment() { this.count2++ },
+           testClick() { console.log('this is a test click from component') },
+           filtra() { this.dados.filter((item)=>item.cor=="primary"); },
+           //filtra() { this.dados=3;}
+        },
+    }).mount('#app')
+    </script>
+
+
+</body>
+</html>
