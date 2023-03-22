@@ -24,7 +24,7 @@
     <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="algarve.html">Home</a>
-        <a class="p-2 text-dark" href="algarvedisponivel.html">Disponíveis</a>
+        
         <a class="p-2 text-dark" href="alessandro-ls.html">Relação</a>
       </nav>    
   </div>
@@ -41,18 +41,15 @@
     <script type="text/javascript">
       console.log("primeiro",this.aptos);
       let itens = this.aptos; 
-      
-      function disponiveis() {
-        itens = itens.filter((item)=>item.cor=="primary");
-        console.log('Com filtro',itens);
-      };
-      console.log('Com filtro2',itens);
+      let itf = itens.filter((item)=>item.cor=="primary");
+      console.log('Com filtro',itf);
+            
       //let itens = this.aptos;
       //let itens = this.aptos.reverse();
       const cardText = document.getElementById('dados');
       let spam = document.getElementById('dados');
       let html = "";
-        for (i of itens) {        
+        for (i of itf) {        
         console.log('front', i);
               
       html = html + `   

@@ -26,14 +26,31 @@
     <br><br>
       
     <button onclick="myFunction()">
-        Click Here!
+        Trocar link!
+    </button> <br><br>
+
+    <p id="nome">João</p>
+    
+    <button onclick="myFunction2()">
+        Inserir nome!
     </button>
+
       
     <script type="text/javascript">
         function myFunction() { 
             document.getElementById('myLink').href ="https://www.geeksforgeeks.org";
             document.getElementById("myLink").textContent = "Go to GeeksforGeeks";
         }
+
+        var nome_usuario = 'douglas';
+        function setNome(nome) {nome_usuario = nome;}
+
+            alert(nome_usuario); // douglas
+            setNome('emilia');
+            console.log(nome_usuario);
+            alert(nome_usuario); // emilia
+        
+            function myFunction2() { document.getElementById('nome').textContent = nome_usuario; }    
     </script>
 </body>
   
