@@ -8,20 +8,20 @@
 
 </head>
 <body>
-    
-    
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <div id="app">
-       <p>{{ message }}</p>
-       <p>{{ dados }}</p> 
-       <li v-for="item in dados">
-        {{ item.id }}-    -{{ item.local }}-    -{{ item.cor }}
-      </li> 
        <button @click="count++">{{ count }}</button>
        <button @click="increment">{{ count2 }}</button>
        <button @click="testClick">consoleLog</button>
        <button @click="filtra">filtra</button>
+       <br>
+       <p>{{ message }}</p>
+       <p>{{ dados }}</p> 
+       <div v-for="item in dados">
+           {{ item.id }}-    -{{ item.local }}-    -{{ item.cor }}
+       </div> 
 
     </div>
 
@@ -46,9 +46,12 @@
         methods: 
         {
            increment() { this.count2++ },
-           testClick() { console.log('this is a test click from component') },
-           filtra() { this.dados.filter((item)=>item.cor=="primary"); },
-           //filtra() { this.dados=3;}
+           testClick() { console.log('dados',this.dados) },
+           filtra() { this.dados = itens.filter((x)=>x.cor=="primary"); },
+        },
+        computed:
+        {
+           //O COMPUTED é executado quando o vue e carregado com a página 
         },
     }).mount('#app')
     </script>

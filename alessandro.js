@@ -11,7 +11,7 @@ var aptos = [
         imobiliaria:"Paula 910.141.320",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32130149/",
-        obs:"A anunciante não atende", end:"", cor:"warning", planta:"warning",
+        obs:"A anunciante não atende", end:"", cor:"primary", planta:"primary",
     },
     {
         id:3, local:"Portimão / 3 castelos", valor:"670.000€", tipologia:"T3", ee:"B", garagem:"2", situacao:"Disponível / Pronto", 
