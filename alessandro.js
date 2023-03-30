@@ -7,9 +7,9 @@ var aptos = [
         obs:"Só o R/C disponível", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:2, local:"Portimão / Oasis Mar Lt. 1", valor:"625.000€", tipologia:"T3", ee:"", garagem:2, situacao:"aguardando retorno", 
+        id:2, local:"Portimão / Oasis Mar Lt. 1", valor:"625.000€", tipologia:"T3", ee:"A+", garagem:2, situacao:"aguardando retorno", 
         imobiliaria:"Paula 910.141.320",
-        comissao:"", agendamento: "",
+        comissao:"", agendamento: "01/04/2023 às 11hs",
         link:"https://www.idealista.pt/imovel/32130149/",
         obs:"A anunciante não atende", end:"", cor:"primary", planta:"primary",
     },
