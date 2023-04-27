@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="img/casa.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <!-- bootstrap js" --> 
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>    
@@ -18,8 +19,13 @@
 
 <body>
   <!-- Agrupamento de Escolas Martim de Freitas -->
+  <!-- ---------------------------------------------------------- H E A D E R -->
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">myHome</h1>
+  <p class="lead">Imóveis em Coimbra até 250.000€</p>
+</div>
   
-  <center> <h2><div style="margin:40px ;" class="bg-light">Imóveis em Coimbra até 250.000€</div></h2> </center>
+  <!-- center> <h2><div style="margin:40px ;" class="bg-light">Imóveis em Coimbra até 250.000€</div></h2> </center -->
     <center>
       <div>  
         <span id='dados'> </span>
@@ -32,10 +38,12 @@
       console.log(this.aptos);  
       let itens = this.aptos;
       //let itens = this.aptos.reverse();
+      function filtra (value){if (value.id > 0) return value;} // filtra id > 0
+      let itens2 = itens.filter(filtra);
       const cardText = document.getElementById('dados');
       let spam = document.getElementById('dados');
       let html = "";
-        for (i of itens) {        
+        for (i of itens2) {        
         console.log('front', i);
               
       html = html + `   

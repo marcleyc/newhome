@@ -11,21 +11,21 @@ var aptos = [
         imobiliaria:"",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32607439/foto/15/",
-        obs:"750m da escola da Clarinha", end:"", cor:"light", planta:"warning"
+        obs:"750m da escola da Clarinha", end:"", cor:"primary", planta:"warning"
     },
     {
         id:3, local:"", valor:"250.000€", tipologia:"T4", ee:"D", garagem:"", situacao:"", 
         imobiliaria:"",
         comissao:"", agendamento: "",
         link:"https://www.idealista.pt/imovel/32493725/",
-        obs:"", end:"", cor:"light", planta:"warning"
+        obs:"", end:"", cor:"primary", planta:"warning"
     },
     {
-        id:"mapa", local:"", valor:"", tipologia:"T4", ee:"", garagem:"", situacao:"", 
+        id:0, local:"", valor:"", tipologia:"T4", ee:"", garagem:"", situacao:"", 
         imobiliaria:"",
         comissao:"", agendamento: "",
         link:"",
-        obs:"", end:"", cor:"light", planta:"warning"
+        obs:"", end:"", cor:"primary", planta:"warning"
     },
     
 ]
