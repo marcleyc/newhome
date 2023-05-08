@@ -21,6 +21,20 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"warning"
     },
     {
+        id:4, local:"", valor:"295.000€", tipologia:"T3", ee:"D", garagem:"1", situacao:"Aguradando retorno", 
+        imobiliaria:"KW Union Coimbra 239.320.863",
+        comissao:"", agendamento: "",
+        link:"https://supercasa.pt/venda-apartamento-t3-coimbra/i1087971",
+        obs:"", end:"", cor:"primary", planta:"warning"
+    },
+    {
+        id:5, local:"", valor:"187.500€", tipologia:"T2+1", ee:"E", garagem:"?", situacao:"", 
+        imobiliaria:"",
+        comissao:"", agendamento: "",
+        link:"",
+        obs:"", end:"", cor:"primary", planta:"warning"
+    },
+    {
         id:0, local:"", valor:"", tipologia:"T4", ee:"", garagem:"", situacao:"", 
         imobiliaria:"",
         comissao:"", agendamento: "",
