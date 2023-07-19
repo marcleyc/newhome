@@ -24,6 +24,19 @@ MIRANDA DO CORVO = Rua Estação - Miranda do Corvo
 R. Cap. Santos Leite,Lousã, Coimbra
 
 Wilmar:
+# preferidos
+
+01 https://supercasa.pt/venda-apartamento-t3-coimbra/i1087971
+
+02 https://supercasa.pt/venda-apartamento-t3-coimbra/i1042904
+
+03 https://supercasa.pt/venda-apartamento-t2-coimbra/i981987
+
+
+
+
+
+maybe
 
 https://supercasa.pt/venda-apartamento-t2-coimbra/i1031687
 
