@@ -17,7 +17,7 @@
         <div class="row g-0">
           <div class="col-md-4" v-for="item in dados">
             <a href="{{item.link}}" target="_blank">
-              <img src="imgCoimbra/${i.id}.jpg" class="img-fluid rounded-start" alt="">
+              <img src="{{item.id}}" class="img-fluid rounded-start" alt="">
             </a>
           </div>
           <div class="col-md-8">
@@ -31,7 +31,7 @@
               <div class="d-grid gap-2 mt-1"> <button class="btn btn-${i.cor}">Situação: ${i.situacao}</button> </div>
               <p class="card-text text-danger">OBS: ${i.obs} </p>
               <p class="card-text text-success">Agendamento: ${i.agendamento} </p>
-              <p class="card-text">Local: {{ dados }} </>
+              <p class="card-text">Local: {{ dados }} </p>
             
             </div>
           </div>
