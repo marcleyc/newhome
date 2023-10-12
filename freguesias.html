@@ -1,0 +1,186 @@
+<html>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  
+  <center><h2 class="pa-4">F R E G U E S I A S ... P O R T U G U E S A S</h2></center>
+
+  <div class="container">   
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-data-table
+          :headers="headers"
+          :items="filteredDesserts"
+          :items-per-page="12"
+          class="elevation-1"
+        >
+          <template v-slot:header.distrito="{ header }">
+            {{ header.text }}
+            <v-menu offset-y :close-on-content-click="false">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                  <v-icon small :color="distritos ? 'primary' : ''">
+                    mdi-filter
+                  </v-icon>
+                </v-btn>
+              </template>
+              <div style="background-color: white; width: 280px">
+                <v-text-field
+                  v-model="distritos"
+                  class="pa-4"
+                  type="text"
+                  label="Enter the search term"
+                  :autofocus="true"
+                ></v-text-field>
+                <v-btn
+                  @click="distritos = ''"
+                  small
+                  text
+                  color="primary"
+                  class="ml-2 mb-2"
+                >Clean</v-btn>
+              </div>
+            </v-menu>
+          </template>
+          
+          <template v-slot:header.concelho="{ header }">
+            {{ header.text }}
+            <v-menu offset-y :close-on-content-click="false">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                  <v-icon small :color="concelho ? 'primary' : ''">
+                    mdi-filter
+                  </v-icon>
+                </v-btn>
+              </template>
+              <div style="background-color: white; width: 280px">
+                <v-text-field
+                  v-model="concelhos"
+                  class="pa-4"
+                  type="text"
+                  label="Enter the search term"
+                  :autofocus="true"
+                ></v-text-field>
+                <v-btn
+                  @click="concelhos = ''"
+                  small
+                  text
+                  color="primary"
+                  class="ml-2 mb-2"
+                >Clean</v-btn>
+              </div>
+            </v-menu>
+          </template>
+          
+          <template v-slot:header.freguesia="{ header }">
+            {{ header.text }}
+            <v-menu offset-y :close-on-content-click="false">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                  <v-icon small :color="freguesia ? 'primary': ''">
+                    mdi-filter
+                  </v-icon>
+                </v-btn>
+              </template>
+              <div style="background-color: white; width: 280px">
+                <v-text-field
+                  v-model="freguesias"
+                  class="pa-4"
+                  type="text"
+                  label="Enter the search term"
+                  :autofocus="true"
+                ></v-text-field>
+                <v-btn
+                  @click="freguesias = ''"
+                  small
+                  text
+                  color="primary"
+                  class="ml-2 mb-2"
+                >Clean</v-btn>
+              </div>
+            </v-menu>
+          </template>
+          
+        </v-data-table>
+      </v-main>
+    </v-app>
+  </div>
+</div>
+
+<script src="./freguesias.js"></script>
+<script>
+  var remoto = jsonFre.freguesias;
+  console.log("remoto".remoto);
+  console.log(remoto[0].Concelho);
+  
+  var array = []
+  for (i = 0; i < remoto.length; i++) {
+    array.push({
+    distrito: remoto[i].Distrito,
+    concelho: remoto[i].Concelho,
+    freguesia: remoto[i].Freguesia,
+  })
+} 
+  console.log("array",array);
+  
+  // função para remover caracteres especiais
+  const replaceSpecialChars = (str) => {
+	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
+		.replace(/([^\w]+|\s+)/g, '-') // Substitui espaço e outros caracteres por hífen
+		.replace(/\-\-+/g, '-')	// Substitui multiplos hífens por um único hífen
+		.replace(/(^-+|-+$)/, ''); // Remove hífens extras do final ou do inicio da string
+}
+
+console.log(replaceSpecialChars(remoto));
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data () {
+      return {
+        distritos: '',
+        concelhos: '',
+        freguesias: '',
+        headers: [
+          { text: 'Distrito', value: 'distrito', align: 'start', search:'true' },
+          { text: 'Concelho', value: 'concelho', align: 'start', search:'true'  },
+          { text: 'Freguesia', value: 'freguesia',align: 'start', search:'true'  },
+        ],
+        desserts: array,
+      }
+    },
+   computed: {
+    filteredDesserts() {
+      
+      conditions = [];
+      if (this.distritos)  {conditions.push(this.filterDistritos);}
+      if (this.concelhos)  {conditions.push(this.filterConcelhos);}
+      if (this.freguesias) {conditions.push(this.filterFreg);}
+      
+      if (conditions.length > 0) {
+        return this.desserts.filter((dessert) => {
+          return conditions.every((condition) => {
+            return condition(dessert);
+          })
+        })
+      }
+      
+      return this.desserts;
+    }
+  },
+   methods: {
+     filterDistritos(item) { return item.distrito.toLowerCase().includes(this.distritos.toLowerCase());}, //return item.idc.toLowerCase().includes(this.dessertName.toLowerCase()); //quando for número
+     filterConcelhos(item) { return item.concelho.toLowerCase().includes(this.concelhos.toLowerCase());},
+     filterFreg(item) { return item.freguesia.toLowerCase().includes(this.freguesias.toLowerCase());}
+   }
+   })
+  </script>
+
+</html>
