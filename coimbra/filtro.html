@@ -1,0 +1,31 @@
+<button id="filterButton">Aplicar Filtro</button>
+
+<ul id="itemList">
+  <li class="item">Item 1</li>
+  <li class="item">Item 2</li>
+  <li class="item">Item 3</li>
+  <li class="item">Item 4</li>
+</ul>
+
+<script>
+document.getElementById('filterButton').addEventListener('click', function() {
+  // Filtre os elementos como desejar
+  var items = document.querySelectorAll('.item');
+  items.forEach(function(item) {
+    // Exemplo de filtro simples: ocultar todos os itens, exceto o primeiro
+    if (item.textContent !== 'Item 1') {
+      item.style.display = 'none';
+    }
+  });
+
+  // Atualize a URL para incluir o filtro (substitua '/pagina' pelo seu URL atual)
+  var filtro = 'filtro=aplicado';
+  var novaURL = window.location.origin + window.location.pathname + '?' + filtro;
+  
+  // Recarregue a página com o filtro aplicado
+  window.location.href = novaURL;
+});
+</script>
+
+</body>
+</html>

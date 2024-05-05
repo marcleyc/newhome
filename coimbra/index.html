@@ -23,14 +23,14 @@
     <img src="img/home.png" target="_blank" width="40">
     <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
       <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="algarve.html">Home</a>
-        <a class="p-2 text-dark" href="algarvedisponivel.html">Disponíveis</a>
-        <a class="p-2 text-dark" href="alessandro-ls.html">Relação</a>
+        <a class="p-2 text-dark" href="index.html">Home</a>
+        <a class="p-2 text-dark" href="disponivel.html">Disponíveis</a>
+        <a class="p-2 text-dark" href="lista.html">Relação</a>
       </nav>    
   </div>
 </div>
 <!-- ---------------------------------------------------------- M E N U  2 -->      
-<button onclick="disponiveis()">todos</button>
+<div class="butt"> <button onclick="disponiveis()">todos</button> </div>
 <!-- -----------------------------------------------------------D A D O S -->    
     <center>
       <div>  
@@ -38,7 +38,7 @@
       </div>    
     </center>
 <!-- ---------------------------------------------------------- S C R I P T -->    
- <script src="alessandro.js"></script>  
+ <script src="db.js"></script>  
 
     <script type="text/javascript">
       console.log("primeiro",this.aptos);
@@ -63,7 +63,7 @@
         <div class="row g-0">
           <div class="col-md-4">
             <a href="${i.link}" target="_blank">
-              <img src="imgAlgarve/${i.id}.jpg" class="img-fluid rounded-start" alt="">
+              <img src="imgCoimbra/${i.id}.jpg" class="img-fluid rounded-start" alt="">
             </a>
           </div>
           <div class="col-md-8">
@@ -86,7 +86,7 @@
  </script>
 <!-- ---------------------------------------------------------- S T Y L E -->    
 <style>
-
+#butt {align-items: center;}
 </style>
 </body>
 </html>
