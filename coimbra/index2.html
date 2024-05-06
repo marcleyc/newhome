@@ -26,11 +26,11 @@
         <a class="p-2 text-dark" href="index.html">Home</a>
         <a class="p-2 text-dark" href="disponivel.html">Disponíveis</a>
         <a class="p-2 text-dark" href="lista.html">Relação</a>
+        <button onclick="disponiveis()">Filtro</button>
       </nav>    
   </div>
 </div>
-<!-- ---------------------------------------------------------- M E N U  2 -->      
-<div class="butt"> <button onclick="disponiveis()">todos</button> </div>
+
 <!-- -----------------------------------------------------------D A D O S -->    
     <center>
       <div>  
@@ -45,8 +45,8 @@
     const params = new URLSearchParams(window.location.search);
     const idc = params.get('id');
     console.log('id URL',idc);    
-    console.log(nubentes); 
-    function filtrarId (value){ return value.id == idc; }
+    console.log('apartamentos',aptos); 
+    function filtrarId (value){ return value.situacao == 'disponivel'; }
     var nubente = nubentes.filter(filtrarId);
     console.log(nubente)
     console.log(nubente[0].nubente1)
@@ -98,7 +98,8 @@
  </script>
 <!-- ---------------------------------------------------------- S T Y L E -->    
 <style>
-#butt {align-items: center;}
+button {align: right; margin-left: 100px; border-radius: 8px; }
+button:hover {background-color: #3e8e41;color: white;}
 </style>
 </body>
 </html>
