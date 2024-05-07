@@ -16,7 +16,7 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:4, local:"zona de Montes Claros e a Praça da República", valor:"75.000€", tipologia:"T0", ee:"D", garagem:"1", 
+        id:3, local:"zona de Montes Claros e a Praça da República", valor:"75.000€", tipologia:"T0", ee:"D", garagem:"1", 
         situacao:"Disponível / Pronto", 
         imobiliaria:"KW Frederik Buys",
         comissao:"", agendamento: "",
@@ -24,7 +24,7 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:3, local:"Coimbra", valor:"000.000€", tipologia:"T", ee:"", garagem:"", 
+        id:4, local:"Coimbra", valor:"000.000€", tipologia:"T", ee:"", garagem:"", 
         situacao:"VENDIDO", 
         imobiliaria:"",
         comissao:"", agendamento: "",
