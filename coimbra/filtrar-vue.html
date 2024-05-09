@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 - Atualizar Array de Objetos</title>
+    <!-- script src="https://unpkg.com/vue@next"></script -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button @click="applyFilter">Aplicar Filtro</button>
+        </div>
+        <div v-for="item in filteredArray" :key="item.id">
+            <p>Name: {{ item.name }}</p>
+            <p>Age: {{ item.age }}</p>
+            <p>City: {{ item.city }}</p>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    arrayOfObjects: [
+                        { id: 1, name: "John", age: 30, city: "New York" },
+                        { id: 2, name: "Alice", age: 25, city: "Los Angeles" },
+                        { id: 3, name: "Bob", age: 35, city: "Chicago" }
+                    ]
+                };
+            },
+            computed: {
+                filteredArray() {
+                    // Exemplo de filtro: remover todos os objetos com idade menor que 30
+                    return this.arrayOfObjects.filter(obj => obj.age >= 30);
+                }
+            },
+            methods: {
+                applyFilter() {
+                    // Exemplo de filtro: remover todos os objetos com idade menor que 30
+                    this.arrayOfObjects = this.arrayOfObjects.filter(obj => obj.age > 30);
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

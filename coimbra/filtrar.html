@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Array de Objetos</title>
+</head>
+<body>
+    <div id="arrayDisplay"></div>
+    <button id="updateButton">Aplicar Filtro</button>
+    <script src="db.js"></script>  
+    <script>
+        // Array inicial de objetos
+
+        let myArrayOfObjects = this.aptos;
+        //[
+        //    { name: "John", age: 30, city: "New York" },
+        //    { name: "Alice", age: 25, city: "Los Angeles" },
+        //    { name: "Bob", age: 35, city: "Chicago" }
+        //];
+
+        // Função para exibir o array de objetos
+        function displayArrayOfObjects(arr) {
+            const arrayDisplay = document.getElementById('arrayDisplay');
+            arrayDisplay.innerHTML = "";
+            arr.forEach(obj => {
+                const objDiv = document.createElement('div');
+                objDiv.innerHTML = `
+                    <p>Name: ${obj.cor}</p>
+                    <p>Age: ${obj.id}</p>
+                    <p>City: ${obj.cvalor}</p>
+                `;
+                arrayDisplay.appendChild(objDiv);
+            });
+        }
+
+        // Função para aplicar filtro no array de objetos
+        function applyFilter() {
+            // Exemplo de filtro: remover todos os objetos com idade menor que 30
+            myArrayOfObjects = myArrayOfObjects.filter(obj => obj.id >= 3);
+
+            // Exibir o array de objetos atualizado
+            displayArrayOfObjects(myArrayOfObjects);
+        }
+
+        // Mostrar o array de objetos inicial quando a página carregar
+        window.onload = function() {
+            displayArrayOfObjects(myArrayOfObjects);
+        };
+
+        // Adicionar um listener de evento para o botão de aplicar filtro
+        const updateButton = document.getElementById('updateButton');
+        updateButton.addEventListener('click', applyFilter);
+
+    </script>
+</body>
+</html>
