@@ -24,7 +24,15 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:4, local:"Terraços do Rio", valor:"350.000€", tipologia:"T2", ee:"", garagem:"", 
+        id:4, local:"Terraços do Rio", valor:"350.000€", tipologia:"T1", ee:"", garagem:"", 
+        situacao:"Disponível", 
+        imobiliaria:"Era Imobiliária",
+        comissao:"30% de 4% Sidonio Barros", agendamento: "05/03/2025 ás 16hs",
+        link:"https://www.era.pt/imovel/apartamento-t1-terraco-coimbra-terracos-do-rio-115250101", 
+        obs:"", end:"", cor:"primary", planta:"warning"
+    },
+    {
+        id:5, local:"Terraços do Rio", valor:"380.000€", tipologia:"T2", ee:"", garagem:"", 
         situacao:"Disponível", 
         imobiliaria:"Era Imobiliária",
         comissao:"30% de 4% Sidonio Barros", agendamento: "05/03/2025 ás 16hs",
