@@ -8,7 +8,7 @@ var aptos = [
         obs:"Flávio Carvalho - 961.327.792", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:2, local:"Forum", valor:"360.000€", tipologia:"T2", ee:"A", garagem:"", 
+        id:2, local:"Forum", valor:"360.000€", tipologia:"T2", ee:"A", garagem:"1", 
         situacao:"Disponível", 
         imobiliaria:"Civilria",
         comissao:"4%", agendamento: "05/03/2025 às 11hs",
@@ -16,7 +16,7 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:3, local:"Baixa - Sé Nova", valor:"282.000€", tipologia:"T2", ee:"B", garagem:"?", 
+        id:3, local:"Baixa - Sé Nova", valor:"282.000€", tipologia:"T2", ee:"B", garagem:"1", 
         situacao:"Disponível / Pronto", 
         imobiliaria:"Remax - Cláudia",
         comissao:"", agendamento: "05/03/2025 ás 15hs",
@@ -24,7 +24,7 @@ var aptos = [
         obs:"", end:"", cor:"primary", planta:"primary",
     },
     {
-        id:4, local:"Terraços do Rio", valor:"350.000€", tipologia:"T1", ee:"", garagem:"", 
+        id:4, local:"Terraços do Rio", valor:"350.000€", tipologia:"T1", ee:"A", garagem:"1", 
         situacao:"Disponível", 
         imobiliaria:"Era Imobiliária",
         comissao:"30% de 4% Sidonio Barros", agendamento: "05/03/2025 ás 16hs",
