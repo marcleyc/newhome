@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advogada - Dra. Maria Silva</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      color: #333;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 1rem;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: #2563eb;
+    }
+    section {
+      min-height: 100vh;
+      padding: 100px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      width: 100%;
+    }
+    .skill {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .skill:hover { transform: translateY(-5px); }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1e40af; }
+
+    footer {
+      background: #f3f4f6;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu -->
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#publicacoes">Publicações</a></li>
+      <li><a href="#contactos">Contactos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+  <section id="home">
+    <h1 class="fade-in">Dra. Maria Silva</h1>
+    <p class="fade-in">Advogada especializada em Direito Civil e Empresarial, ajudando pessoas e empresas a alcançarem justiça e segurança jurídica.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="fade-in">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill fade-in">Direito Civil</div>
+      <div class="skill fade-in">Direito Empresarial</div>
+      <div class="skill fade-in">Consultoria Jurídica</div>
+      <div class="skill fade-in">Mediação de Conflitos</div>
+      <div class="skill fade-in">Elaboração de Contratos</div>
+      <div class="skill fade-in">Litígios Judiciais</div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv" style="background:#f9fafb">
+    <h2 class="fade-in">Currículo</h2>
+    <p class="fade-in">Formada em Direito pela Universidade de Lisboa, com mais de 10 anos de experiência em advocacia e consultoria jurídica.</p>
+    <a href="#" class="btn fade-in">Download CV</a>
+  </section>
+
+  <!-- Publicações -->
+  <section id="publicacoes">
+    <h2 class="fade-in">Publicações</h2>
+    <div class="card fade-in">
+      <h3>O Futuro do Direito Empresarial</h3>
+      <p>Revista de Direito, 2023</p>
+    </div>
+    <div class="card fade-in">
+      <h3>Mediação como Alternativa Judicial</h3>
+      <p>Jornal Jurídico, 2022</p>
+    </div>
+  </section>
+
+  <!-- Contactos -->
+  <section id="contactos" style="background:linear-gradient(to right, #e0e7ff, #f3e8ff)">
+    <h2 class="fade-in">Contactos</h2>
+    <p class="fade-in">Entre em contacto para agendar uma consulta.</p>
+    <p class="fade-in"><a href="mailto:contato@advogada.com" class="btn">Email</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Dra. Maria Silva - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    // Scroll Spy para menu ativo
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Animações com Intersection Observer
+    const faders = document.querySelectorAll(".fade-in");
+    const appearOptions = { threshold: 0.2 };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+</body>
+</html>

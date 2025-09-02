@@ -1,0 +1,15 @@
+Criar uma página web única, moderna e animada para uma advogada.
+quero que tenha um menu com:
+-Home
+-Skills
+-CV 
+-Pubicações
+-Contactos 
+# no lado esquerdo do menu quero uma opção para dark-mode e light-mode
+# gerenciar as cores, para um aspecto moderno e elegante, de preferência usando a cor vinho.
+Na 1ª div home, colocar uma imagem do lado esquerdo que ocupe 70% da tela e 30% uma tela branca e com um texto que fique entre eles, e que na hora de carregar comece com alguma animação.
+Quando escolar para baixo inclua uma animação
+Na div Skills, colocar uma imagem do lado direito que ocupe 40% da tela e 60% uma tela branca e com um texto que fique somente na tela branca. 
+Na div CV, criar um parágrafo com fonte de 18, depois outro paragrafo com fonte 16 e depois outro paragrafo com fonte 14
+Na div publicações, dividir a linha em 2 e na 1º parte escrever Tese e na 2ª parte com 65% da tela escrever uma grande frase
+Na div contactos, dividir a div em 2 do lado esquerd, colocar os icones do linkedin, facebook e e-mail, com seus respectivos links, e ao lado direto colocar o icone do whatsapp com telefone.

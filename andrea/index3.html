@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Andrea L. Carvalho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 1.5s ease;
+        }
+
+        .wine-gradient {
+            background: linear-gradient(135deg, #8B1538 70%, #ffffff 70%);
+        }
+
+        .dark .wine-gradient {
+            background: linear-gradient(135deg, #8B1538 70%, #1a1a1a 70%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .glass-effect {
+            background: rgba(26, 26, 26, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(45deg, #ffffff, #A64B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wine: {
+                            50: '#fdf2f5',
+                            100: '#fce7eb',
+                            200: '#f9d0da',
+                            300: '#f4a8ba',
+                            400: '#ec7894',
+                            500: '#e04870',
+                            600: '#cd2955',
+                            700: '#A64B6B',
+                            800: '#8B1538',
+                            900: '#6B1028'
+                        }
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-50 px-8 py-4 transition-all duration-300">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+            <!-- Logo/Brand -->
+            <div class="text-xl font-bold text-wine-800">Dra. Andrea L. Carvalho</div>
+            
+            <!-- Menu -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300 relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-wine-800 transition-all duration-300 group-hover:w-full"></span>
+                </a></li>
+                <li><a href="#skills" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300 relative group">
+                    Skills
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-wine-800 transition-all duration-300 group-hover:w-full"></span>
+                </a></li>
+                <li><a href="#cv" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300 relative group">
+                    CV
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-wine-800 transition-all duration-300 group-hover:w-full"></span>
+                </a></li>
+                <li><a href="#publications" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300 relative group">
+                    Publicações
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-wine-800 transition-all duration-300 group-hover:w-full"></span>
+                </a></li>
+                <li><a href="#contacts" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300 relative group">
+                    Contactos
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-wine-800 transition-all duration-300 group-hover:w-full"></span>
+                </a></li>
+            </ul>
+
+            <!-- Theme Toggle (Right Side) -->
+            <div class="flex items-center gap-3 cursor-pointer px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-wine-800 hover:text-white transition-all duration-300" onclick="toggleTheme()">
+                <span id="theme-icon" class="text-lg">🌙</span>
+                <span id="theme-text" class="font-medium">Dark</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center wine-gradient text-white relative overflow-hidden">
+        <!-- Left Image (70%) -->
+        <div class="absolute left-0 top-0 w-[70%] h-full z-10"> <img src="./img/primeira.jpg" alt="">
+            <div class="w-full h-full bg-gradient-to-r from-wine-800/80 to-wine-600/60 flex items-center justify-center">
+                <div class="w-80 h-96 bg-gray-200/20 rounded-3xl border-4 border-white/30 flex items-center justify-center text-white/80 text-lg font-semibold">
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Central Text -->
+        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 text-right glass-effect px-8 py-6 rounded-3xl animate-slide-in">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-800">Dra. Andrea L. Carvalho</h1>
+            <p class="text-xl mb-2 text-black/80">Advogada especializada em Direito Civil e Empresarial</p>
+            <p class="text-lg text-black/80">Comprometida com a excelência jurídica e a defesa dos seus direitos</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="min-h-screen flex items-center bg-white dark:bg-gray-900 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+        <div class="max-w-6xl mx-auto flex items-center gap-8">
+            <!-- Text Content (60%) -->
+            <div class="w-full md:w-3/5 pr-8">
+                <h2 class="text-4xl md:text-5xl font-bold text-wine-800 mb-6">Competências</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    Com mais de 10 anos de experiência em advocacia, desenvolvi competências sólidas em diversas áreas do direito. Especializo-me em direito civil, empresarial e contratual, sempre com foco na proteção dos interesses dos meus clientes.
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    A minha abordagem combina rigor técnico com proximidade humana, garantindo soluções jurídicas eficazes e personalizadas para cada situação.
+                </p>
+            </div>
+            
+            <!-- Image (40%) -->
+            <div class="w-full md:w-2/5">
+                <div class="h-96 bg-gradient-to-br from-wine-800 to-wine-600 rounded-3xl shadow-2xl flex items-center justify-center text-white text-xl font-semibold transform hover:scale-105 transition-transform duration-300">
+                    <img src="./img/segunda.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv" class="flex items-center bg-wine-200 dark:bg-wine-200 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-wine-800 mb-12">Curriculum Vitae</h2>
+            <div class="space-y-8">
+                <p class="text-lg font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
+                    Andréa L. Carvalho é Advogada, em exercício individual da advocacia, habilitada pela Ordem dos Advogados Portugueses (57281C) e pela Ordem dos Advogados do Brasil (205872), Mestre em Ciências Jurídico-Económicas pela Faculdade de Direito da Universidade de Coimbra, e também Especialista em Finanças, pela Boston School.
+                </p>
+                <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Com certificação profissional ANBIMA, operou como Consultora Financeira por quase 20 anos nos bancos Santander, BankBoston, Itaú Personnalité e Safra.
+                </p>
+                <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Acumula em seu currículo português inúmeras formações nas áreas do Direito da Imigração e da Nacionalidade, do Comércio Internacional e do Direito Notarial e Registal.
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                    Tem por objetivo execer a advocacia com independência, espírito de serviço, coragem e dignidade, cumprindo escrupulosamente os deveres fundamentais, legais e deontológicos, da profissão.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="min-h-screen flex items-center bg-white dark:bg-gray-900 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-wine-800 mb-12 text-center">Publicações</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <!-- Thesis Title (35%) -->
+                <div class="w-full md:w-[35%]">
+                    <h3 class="text-3xl md:text-4xl font-bold text-wine-800">Tese</h3>
+                </div>
+                
+                <!-- Description (65%) -->
+                <div class="w-full md:w-[65%]">
+                    <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed italic">
+                        "A Evolução dos Contratos Empresariais no Direito Português: Análise Crítica das Novas Tendências Contratuais na Era Digital e o Seu Impacto na Segurança Jurídica das Relações Comerciais Modernas"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="flex items-center bg-wine-800 dark:bg-wine-900 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-12">Contactos</h2>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <!-- Social Links (Left) -->
+                <div class="flex gap-6 items-center">
+                    <a href="https://instagram.com" class="w-16 h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
+                        <img class="w-25 h-25" src="./img/icons8-instagram-48.png" alt="">
+                    </a>
+                    <a href="https://facebook.com" class="w-20 h-20 text-wine-800 rounded-full flex items-center justify-center text-2xl  transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
+                       <img class="w-16 h-16" src="./img/icons8-facebook-50.png" alt="">
+                    </a>
+                    <a href="mailto:andrealevindo@gmail.pt" class="w-16 h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl hover:bg-wine-300 transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
+                       <img class="w-16 h-16" src="./img/icons8-mail-50.png" alt="">
+                    </a>
+                </div>
+                
+                <!-- WhatsApp (Right) -->
+                <a href="https://wa.me/351912345678" class="flex items-center gap-3 bg-green-500 text-white px-6 py-4 rounded-full text-lg font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <img class="w-16 h-16" src="./img/icons8-whatsapp-50.png" alt=""> +351 912 345 678
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+            } else {
+                html.classList.add('dark');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+            }
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-12');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+                nav.classList.replace('bg-white/95', 'bg-white/98');
+                nav.classList.replace('dark:bg-gray-900/95', 'dark:bg-gray-900/98');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.replace('bg-white/98', 'bg-white/95');
+                nav.classList.replace('dark:bg-gray-900/98', 'dark:bg-gray-900/95');
+            }
+        });
+
+        // Mobile menu functionality (can be expanded)
+        function toggleMobileMenu() {
+            // Implementation for mobile menu toggle
+        }
+    </script>
+</body>
+</html>
