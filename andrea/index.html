@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dra. Andrea L. Carvalho</title>
+    <link rel="icon" href="./img/A.jpg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes fadeInUp {
@@ -28,6 +29,17 @@
             }
         }
 
+        @keyframes slideInMobile {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         .animate-fade-in {
             animation: fadeInUp 1s ease forwards;
         }
@@ -36,12 +48,25 @@
             animation: slideIn 1.5s ease;
         }
 
+        .animate-slide-in-mobile {
+            animation: slideInMobile 1.5s ease;
+        }
+
         .wine-gradient {
             background: linear-gradient(135deg, #8B1538 70%, #ffffff 70%);
         }
 
         .dark .wine-gradient {
             background: linear-gradient(135deg, #8B1538 70%, #1a1a1a 70%);
+        }
+
+        @media (max-width: 768px) {
+            .wine-gradient {
+                background: #8B1538;
+            }
+            .dark .wine-gradient {
+                background: #8B1538;
+            }
         }
 
         .glass-effect {
@@ -58,6 +83,58 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .hamburger-top,
+        .hamburger-middle,
+        .hamburger-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: currentColor;
+            transform: rotate(0);
+            transition: all 0.5s;
+        }
+
+        .hamburger-middle {
+            transform: translateY(7px);
+        }
+
+        .hamburger-bottom {
+            transform: translateY(14px);
+        }
+
+        .open .hamburger-top {
+            transform: rotate(45deg) translateY(6px) translateX(6px);
+        }
+
+        .open .hamburger-middle {
+            display: none;
+        }
+
+        .open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(6px) translateX(-6px);
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
         }
     </style>
     <script>
@@ -86,13 +163,13 @@
 </head>
 <body class="font-sans text-gray-800 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-50 px-8 py-4 transition-all duration-300">
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-50 px-4 md:px-8 py-4 transition-all duration-300">
         <div class="flex justify-between items-center max-w-6xl mx-auto">
             <!-- Logo/Brand -->
-            <div class="text-xl font-bold text-wine-800">Dra. Andrea L. Carvalho</div>
+            <div class="text-lg md:text-xl font-bold text-wine-800 truncate max-w-[200px] md:max-w-none">Dra. Andrea L. Carvalho</div>
             
-            <!-- Menu -->
-            <ul class="hidden md:flex space-x-8">
+            <!-- Desktop Menu -->
+            <ul class="hidden lg:flex space-x-8">
                 <li><a href="#home" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300 relative group">
                     Home
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-wine-800 transition-all duration-300 group-hover:w-full"></span>
@@ -115,71 +192,109 @@
                 </a></li>
             </ul>
 
-            <!-- Theme Toggle (Right Side) -->
-            <div class="flex items-center gap-3 cursor-pointer px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-wine-800 hover:text-white transition-all duration-300" onclick="toggleTheme()">
-                <span id="theme-icon" class="text-lg">🌙</span>
-                <span id="theme-text" class="font-medium">Dark</span>
+            <div class="flex items-center gap-4">
+                <!-- Theme Toggle -->
+                <div class="flex items-center gap-2 cursor-pointer px-3 py-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-wine-800 hover:text-white transition-all duration-300" onclick="toggleTheme()">
+                    <span id="theme-icon" class="text-lg">🌙</span>
+                    <span id="theme-text" class="font-medium hidden sm:block">Dark</span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <div class="hamburger text-gray-800 dark:text-white" id="hamburger" onclick="toggleMobileMenu()">
+                        <span class="hamburger-top"></span>
+                        <span class="hamburger-middle"></span>
+                        <span class="hamburger-bottom"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 left-0 w-full h-screen bg-white dark:bg-gray-900 lg:hidden" id="mobile-menu">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
+                <a href="#home" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300" onclick="toggleMobileMenu()">Home</a>
+                <a href="#skills" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300" onclick="toggleMobileMenu()">Skills</a>
+                <a href="#cv" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300" onclick="toggleMobileMenu()">CV</a>
+                <a href="#publications" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300" onclick="toggleMobileMenu()">Publicações</a>
+                <a href="#contacts" class="text-gray-800 dark:text-white font-medium hover:text-wine-800 transition-colors duration-300" onclick="toggleMobileMenu()">Contactos</a>
             </div>
         </div>
     </nav>
 
     <!-- Home Section -->
     <section id="home" class="min-h-screen flex items-center wine-gradient text-white relative overflow-hidden">
-        <!-- Left Image (70%) -->
-        <div class="absolute left-0 top-0 w-[70%] h-full z-10"> <img src="./img/primeira.jpg" alt="">
-            <div class="w-full h-full bg-gradient-to-r from-wine-800/80 to-wine-600/60 flex items-center justify-center">
-                <div class="w-80 h-96 bg-gray-200/20 rounded-3xl border-4 border-white/30 flex items-center justify-center text-white/80 text-lg font-semibold">
-                   
-                </div>
+        <!-- Desktop Layout -->
+        <div class="hidden md:block">
+            <!-- Left Image (70%) -->
+            <div class="absolute left-0 top-0 w-[70%] h-full z-10">
+                <img src="./img/primeira.jpg" alt="Dra. Andrea L. Carvalho" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-wine-800/20 to-wine-600/40"></div>
+            </div>
+
+            <!-- Central Text -->
+            <div class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 text-right glass-effect px-8 py-6 rounded-3xl animate-slide-in">
+                <h1 class="text-4xl lg:text-6xl font-bold mb-4 text-gray-800">Dra. Andrea L. Carvalho</h1>
+                <p class="text-lg lg:text-xl mb-2 text-black/80">Advogada especializada em Direito Civil e Empresarial</p>
+                <p class="text-base lg:text-lg text-black/80">Comprometida com a excelência jurídica e a defesa dos seus direitos</p>
             </div>
         </div>
 
-        <!-- Central Text -->
-        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 text-right glass-effect px-8 py-6 rounded-3xl animate-slide-in">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-800">Dra. Andrea L. Carvalho</h1>
-            <p class="text-xl mb-2 text-black/80">Advogada especializada em Direito Civil e Empresarial</p>
-            <p class="text-lg text-black/80">Comprometida com a excelência jurídica e a defesa dos seus direitos</p>
+        <!-- Mobile Layout -->
+        <div class="md:hidden w-full h-full flex flex-col">
+            <!-- Mobile Image -->
+            <div class="flex-1 relative">
+                <img src="./img/primeira.jpg" alt="Dra. Andrea L. Carvalho" class="w-full h-full object-cover object-top">
+                <div class="absolute inset-0 bg-wine-800/30"></div>
+            </div>
+            
+            <!-- Mobile Text -->
+            <div class="absolute bottom-20 left-4 right-4 z-20 text-center glass-effect px-6 py-4 rounded-2xl animate-slide-in-mobile">
+                <h1 class="text-2xl sm:text-3xl font-bold mb-2 text-white">Dra. Andrea L. Carvalho</h1>
+                <p class="text-sm sm:text-base mb-1 text-white/90">Advogada especializada em Direito Civil e Empresarial</p>
+                <p class="text-xs sm:text-sm text-white/80">Comprometida com a excelência jurídica</p>
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="min-h-screen flex items-center bg-white dark:bg-gray-900 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
-        <div class="max-w-6xl mx-auto flex items-center gap-8">
+    <section id="skills" class="min-h-screen flex items-center bg-white dark:bg-gray-900 px-4 md:px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8">
             <!-- Text Content (60%) -->
-            <div class="w-full md:w-3/5 pr-8">
-                <h2 class="text-4xl md:text-5xl font-bold text-wine-800 mb-6">Competências</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+            <div class="w-full lg:w-3/5 lg:pr-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-wine-800 mb-6">Competências</h2>
+                <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                     Com mais de 10 anos de experiência em advocacia, desenvolvi competências sólidas em diversas áreas do direito. Especializo-me em direito civil, empresarial e contratual, sempre com foco na proteção dos interesses dos meus clientes.
                 </p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                     A minha abordagem combina rigor técnico com proximidade humana, garantindo soluções jurídicas eficazes e personalizadas para cada situação.
                 </p>
             </div>
             
             <!-- Image (40%) -->
-            <div class="w-full md:w-2/5">
-                <div class="h-96 bg-gradient-to-br from-wine-800 to-wine-600 rounded-3xl shadow-2xl flex items-center justify-center text-white text-xl font-semibold transform hover:scale-105 transition-transform duration-300">
-                    <img src="./img/segunda.jpg" alt="">
+            <div class="w-full lg:w-2/5">
+                <div class="h-64 md:h-80 lg:h-96 rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="./img/segunda.jpg" alt="Skills" class="w-full h-full object-contain bg-gray-100 dark:bg-gray-700">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CV Section -->
-    <section id="cv" class="flex items-center bg-wine-200 dark:bg-wine-200 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+    <section id="cv" class="flex items-center bg-wine-200 dark:bg-wine-200 px-4 md:px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-wine-800 mb-12">Curriculum Vitae</h2>
-            <div class="space-y-8">
-                <p class="text-lg font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-wine-800 mb-8 md:mb-12">Curriculum Vitae</h2>
+            <div class="space-y-6 md:space-y-8 text-left md:text-center">
+                <p class="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
                     Andréa L. Carvalho é Advogada, em exercício individual da advocacia, habilitada pela Ordem dos Advogados Portugueses (57281C) e pela Ordem dos Advogados do Brasil (205872), Mestre em Ciências Jurídico-Económicas pela Faculdade de Direito da Universidade de Coimbra, e também Especialista em Finanças, pela Boston School.
                 </p>
-                <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                     Com certificação profissional ANBIMA, operou como Consultora Financeira por quase 20 anos nos bancos Santander, BankBoston, Itaú Personnalité e Safra.
                 </p>
-                <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                     Acumula em seu currículo português inúmeras formações nas áreas do Direito da Imigração e da Nacionalidade, do Comércio Internacional e do Direito Notarial e Registal.
                 </p>
-                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
                     Tem por objetivo execer a advocacia com independência, espírito de serviço, coragem e dignidade, cumprindo escrupulosamente os deveres fundamentais, legais e deontológicos, da profissão.
                 </p>
             </div>
@@ -187,18 +302,18 @@
     </section>
 
     <!-- Publications Section -->
-    <section id="publications" class="min-h-screen flex items-center bg-white dark:bg-gray-900 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+    <section id="publications" class="min-h-screen flex items-center bg-white dark:bg-gray-900 px-4 md:px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-wine-800 mb-12 text-center">Publicações</h2>
-            <div class="flex flex-col md:flex-row items-center gap-8">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-wine-800 mb-8 md:mb-12 text-center">Publicações</h2>
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
                 <!-- Thesis Title (35%) -->
                 <div class="w-full md:w-[35%]">
-                    <h3 class="text-3xl md:text-4xl font-bold text-wine-800">Tese</h3>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-wine-800">Tese</h3>
                 </div>
                 
                 <!-- Description (65%) -->
                 <div class="w-full md:w-[65%]">
-                    <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed italic">
+                    <p class="text-base md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed italic">
                         "A Evolução dos Contratos Empresariais no Direito Português: Análise Crítica das Novas Tendências Contratuais na Era Digital e o Seu Impacto na Segurança Jurídica das Relações Comerciais Modernas"
                     </p>
                 </div>
@@ -207,26 +322,28 @@
     </section>
 
     <!-- Contacts Section -->
-    <section id="contacts" class="flex items-center bg-wine-800 dark:bg-wine-900 px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
+    <section id="contacts" class="flex items-center bg-wine-800 dark:bg-wine-900 px-4 md:px-8 py-20 opacity-0 translate-y-12 transition-all duration-700 animate-on-scroll">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-12">Contactos</h2>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <!-- Social Links (Left) -->
-                <div class="flex gap-6 items-center">
-                    <a href="https://instagram.com" class="w-16 h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
-                        <img class="w-25 h-25" src="./img/icons8-instagram-48.png" alt="">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-12">Contactos</h2>
+            <div class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-8">
+                <!-- Social Links -->
+                <div class="flex gap-4 md:gap-6 items-center">
+                    <a href="https://instagram.com" class="w-12 h-12 md:w-16 md:h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
+                        <img class="w-8 h-8 md:w-10 md:h-10" src="./img/icons8-instagram-48.png" alt="Instagram">
                     </a>
-                    <a href="https://facebook.com" class="w-20 h-20 text-wine-800 rounded-full flex items-center justify-center text-2xl  transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
-                       <img class="w-16 h-16" src="./img/icons8-facebook-50.png" alt="">
+                    <a href="https://facebook.com" class="w-12 h-12 md:w-16 md:h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
+                       <img class="w-10 h-10 md:w-12 md:h-12" src="./img/icons8-facebook-50.png" alt="Facebook">
                     </a>
-                    <a href="mailto:andrealevindo@gmail.pt" class="w-16 h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl hover:bg-wine-300 transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
-                       <img class="w-16 h-16" src="./img/icons8-mail-50.png" alt="">
+                    <a href="mailto:andrealevindo@gmail.pt" class="w-12 h-12 md:w-16 md:h-16 text-wine-800 rounded-full flex items-center justify-center text-2xl hover:bg-wine-300 transform hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
+                       <img class="w-8 h-8 md:w-10 md:h-10" src="./img/icons8-mail-50.png" alt="Email">
                     </a>
                 </div>
                 
-                <!-- WhatsApp (Right) -->
-                <a href="https://wa.me/351912345678" class="flex items-center gap-3 bg-green-500 text-white px-6 py-4 rounded-full text-lg font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                    <img class="w-16 h-16" src="./img/icons8-whatsapp-50.png" alt=""> +351 912 345 678
+                <!-- WhatsApp -->
+                <a href="https://wa.me/351912345678" class="flex items-center gap-3 bg-green-500 text-white px-4 py-3 md:px-6 md:py-4 rounded-full text-sm md:text-lg font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <img class="w-8 h-8 md:w-10 md:h-10" src="./img/icons8-whatsapp-50.png" alt="WhatsApp"> 
+                    <span class="hidden sm:inline">+351 912 345 678</span>
+                    <span class="sm:hidden">WhatsApp</span>
                 </a>
             </div>
         </div>
@@ -248,6 +365,15 @@
                 themeIcon.textContent = '☀️';
                 themeText.textContent = 'Light';
             }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
         }
 
         // Smooth scrolling for navigation
@@ -295,10 +421,30 @@
             }
         });
 
-        // Mobile menu functionality (can be expanded)
-        function toggleMobileMenu() {
-            // Implementation for mobile menu toggle
-        }
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburger = document.getElementById('hamburger');
+            
+            if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+                if (mobileMenu.classList.contains('open')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                const hamburger = document.getElementById('hamburger');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenu.classList.contains('open')) {
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                }
+            }
+        });
     </script>
 </body>
 </html>
