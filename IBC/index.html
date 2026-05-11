@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igreja Batista da Graça — Portugal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a3a;
+            --primary-light: #2d4a5e;
+            --accent: #c9a96e;
+            --accent-hover: #b8965a;
+            --text: #2c3e50;
+            --text-light: #6b7b8d;
+            --bg: #fafbfc;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 42, 58, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 5%;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo svg { width: 32px; height: 32px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1920&q=80') center/cover;
+            opacity: 0.25;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 80%, rgba(201,169,110,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(201,169,110,0.05) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201,169,110,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section { padding: 6rem 5%; }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,42,58,0.3), transparent 50%);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .stat h4 {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .stat span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== SCHEDULE ===== */
+        .schedule {
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,169,110,0.1), transparent 70%);
+        }
+
+        .schedule .section-tag,
+        .schedule .section-header h2,
+        .schedule .section-header p {
+            color: var(--white);
+        }
+
+        .schedule .section-header p { opacity: 0.7; }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .schedule-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .schedule-card .day {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-card h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-card .time {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        /* ===== SERMONS ===== */
+        .sermons {
+            background: var(--white);
+        }
+
+        .sermons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sermon-card {
+            background: var(--bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sermon-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .sermon-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .sermon-card:hover .sermon-image img {
+            transform: scale(1.05);
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .play-btn:hover {
+            background: var(--accent-hover);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .sermon-content {
+            padding: 1.8rem;
+        }
+
+        .sermon-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .sermon-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .sermon-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px; height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item div h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item div p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            background: var(--bg);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--white);
+        }
+
+        .map-placeholder svg {
+            width: 60px; height: 60px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.7);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 42px; height: 42px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 80%; max-width: 320px;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 1001;
+            padding: 5rem 2rem 2rem;
+            transition: right 0.4s ease;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu.open { right: 0; }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover { color: var(--accent); }
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .about-grid,
+            .contact-grid { grid-template-columns: 1fr; }
+            .about-image img { height: 350px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .stats { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            section { padding: 4rem 5%; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+        }
+
+        /* ===== ANIMATIONS ON SCROLL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            Igreja Batista de Coimbra
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#cultos">Cultos</a></li>
+            <li><a href="#ministerios">Ministérios</a></li>
+            <li><a href="#sermoes">Sermões</a></li>
+            <li><a href="pastor.html">Pastor</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" onclick="toggleMenu()">&times;</button>
+        <ul>
+            <li><a href="#inicio" onclick="toggleMenu()">Início</a></li>
+            <li><a href="#sobre" onclick="toggleMenu()">Sobre</a></li>
+            <li><a href="#cultos" onclick="toggleMenu()">Cultos</a></li>
+            <li><a href="#ministerios" onclick="toggleMenu()">Ministérios</a></li>
+            <li><a href="pastor.html" onclick="toggleMenu()">Pastor</a></li>
+            <li><a href="#sermoes" onclick="toggleMenu()">Sermões</a></li>
+            <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Bem-vindo à nossa família</p>
+            <h1>Conhecer a Cristo,<br>Fazer Discípulos</h1>
+            <p>Uma comunidade de fé em Portugal, dedicada a viver e partilhar o Evangelho de Jesus Cristo com amor, verdade e esperança.</p>
+            <div class="btn-group">
+                <a href="#cultos" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Horários de Culto
+                </a>
+                <a href="#contacto" class="btn btn-outline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Fale Connosco
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="about-grid reveal">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=800&q=80" alt="Comunidade da Igreja">
+            </div>
+            <div class="about-text">
+                <p class="section-tag">Quem Somos</p>
+                <h3>Uma Igreja com Propósito</h3>
+                <p>A Igreja Batista da Coimbra é uma comunidade cristã evangélica em Portugal, comprometida com a Palavra de Deus e dedicada a servir as pessoas com amor e compaixão. Acreditamos que cada pessoa é amada por Deus e tem um propósito em Cristo.</p>
+                <p>O nosso desejo é criar um ambiente acolhedor onde todos possam crescer na fé, desenvolver relacionamentos autênticos e descobrir o chamado que Deus tem para as suas vidas.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <h4>15+</h4>
+                        <span>Anos de História</span>
+                    </div>
+                    <div class="stat">
+                        <h4>200+</h4>
+                        <span>Membros Ativos</span>
+                    </div>
+                    <div class="stat">
+                        <h4>8</h4>
+                        <span>Ministérios</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="ministerios">
+        <div class="section-header reveal">
+            <p class="section-tag">Ministérios</p>
+            <h2>Áreas de Serviço</h2>
+            <p>Descubra como pode fazer parte e servir na nossa comunidade</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">👶</div>
+                <h3>Infantil</h3>
+                <p>Um ambiente seguro e divertido onde as crianças aprendem sobre Deus através de histórias, música e atividades.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🎓</div>
+                <h3>Jovens</h3>
+                <p>Um espaço para adolescentes e jovens adultos crescerem na fé, fazerem amizades e descobrirem o seu propósito.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🤝</div>
+                <h3>Ação Social</h3>
+                <p>Apoio às famílias vulneráveis, distribuição de bens e voluntariado na comunidade local.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🎵</div>
+                <h3>Louvor</h3>
+                <p>Ministério de música que conduz a congregação à adoração com excelência e reverência.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">📖</div>
+                <h3>Escola Bíblica</h3>
+                <p>Estudo da Palavra de Deus em pequenos grupos para aprofundar o conhecimento bíblico.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🌍</div>
+                <h3>Missões</h3>
+                <p>Apoio a missionários e projetos evangelísticos em Portugal e no mundo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="schedule" id="cultos">
+        <div class="section-header reveal">
+            <p class="section-tag">Horários</p>
+            <h2>Cultos e Reuniões</h2>
+            <p>Junte-se a nós e faça parte da nossa comunidade de fé</p>
+        </div>
+        <div class="schedule-grid">
+            <div class="schedule-card reveal">
+                <span class="day">Domingo</span>
+                <h3>Culto da Manhã</h3>
+                <div class="time">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    10:00 — 12:00
+                </div>
+                <p>Culto principal da semana com louvor, pregação da Palavra e comunhão. Todos são bem-vindos.</p>
+            </div>
+            <div class="schedule-card reveal">
+                <span class="day">Quarta-feira</span>
+                <h3>Estudo Bíblico</h3>
+                <div class="time">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    20:00 — 21:30
+                </div>
+                <p>Estudo aprofundado das Escrituras em grupo, com partilha e oração.</p>
+            </div>
+            <div class="schedule-card reveal">
+                <span class="day">Sexta-feira</span>
+                <h3>Noite de Oração</h3>
+                <div class="time">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    21:00 — 22:30
+                </div>
+                <p>Momento de intercessão, adoração e busca da presença de Deus.</p>
+            </div>
+            <div class="schedule-card reveal">
+                <span class="day">Sábado</span>
+                <h3>Grupos de Jovens</h3>
+                <div class="time">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    18:00 — 20:00
+                </div>
+                <p>Encontro semanal dos jovens para estudo, convívio e atividades.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERMONS -->
+    <section class="sermons" id="sermoes">
+        <div class="section-header reveal">
+            <p class="section-tag">Sermões</p>
+            <h2>Mensagens Recentes</h2>
+            <p>Assista ou ouça as nossas pregações mais recentes</p>
+        </div>
+        <div class="sermons-grid">
+            <div class="sermon-card reveal">
+                <div class="sermon-image">
+                    <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80" alt="Sermão">
+                    <button class="play-btn">▶</button>
+                </div>
+                <div class="sermon-content">
+                    <div class="sermon-meta">
+                        <span>11 Mai 2026</span>
+                        <span>•</span>
+                        <span>Pastor João Silva</span>
+                    </div>
+                    <h3>Andar pela Fé, Não pela Vista</h3>
+                    <p>Uma reflexão sobre como confiar em Deus mesmo quando não vemos o caminho à nossa frente.</p>
+                </div>
+            </div>
+            <div class="sermon-card reveal">
+                <div class="sermon-image">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" alt="Sermão">
+                    <button class="play-btn">▶</button>
+                </div>
+                <div class="sermon-content">
+                    <div class="sermon-meta">
+                        <span>4 Mai 2026</span>
+                        <span>•</span>
+                        <span>Pastora Ana Costa</span>
+                    </div>
+                    <h3>O Poder da Gratidão</h3>
+                    <p>Como cultivar um coração grato transforma a nossa perspetiva e aproxima-nos de Deus.</p>
+                </div>
+            </div>
+            <div class="sermon-card reveal">
+                <div class="sermon-image">
+                    <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=80" alt="Sermão">
+                    <button class="play-btn">▶</button>
+                </div>
+                <div class="sermon-content">
+                    <div class="sermon-meta">
+                        <span>27 Abr 2026</span>
+                        <span>•</span>
+                        <span>Pastor João Silva</span>
+                    </div>
+                    <h3>Construindo sobre a Rocha</h3>
+                    <p>Os fundamentos de uma vida cristã sólida e duradoura segundo as palavras de Jesus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contacto">
+        <div class="section-header reveal">
+            <p class="section-tag">Contacto</p>
+            <h2>Entre em Contacto</h2>
+            <p>Estamos aqui para o ajudar no seu caminho de fé</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Visite-nos ou Envie uma Mensagem</h3>
+                <p>Queremos conhecer-lo! Seja para oração, esclarecimentos ou simplesmente para tomar um café, as nossas portas estão sempre abertas.</p>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Localização</h4>
+                        <p>Av. Emídio Navarro 54-55<br>3000-150 Coimbra, Portugal</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Telefone</h4>
+                        <p>+351 210 123 456</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>contacto@igrejabatistadagraca.pt</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div>
+                        <h4>Horário de Atendimento</h4>
+                        <p>Segunda a Sexta: 9h — 18h</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <form onsubmit="event.preventDefault(); alert('Obrigado pela sua mensagem! Entraremos em contacto em breve.');">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" placeholder="O seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="o.seu@email.pt" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <input type="text" id="assunto" placeholder="Assunto da mensagem" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" placeholder="Escreva a sua mensagem aqui..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <div class="map-container">
+        <div class="map-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:0.5rem;">Igreja Batista da Coimbra</h3>
+            <p style="opacity:0.6;"> Av. Emídio Navarro nº54 , Coimbra, Portugal, 3000-151 </p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    Igreja Batista da Coimbra
+                </a>
+                <p>Uma comunidade de fé dedicada a conhecer a Cristo e fazer discípulos em Portugal e no mundo.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/igrejabaptistadecoimbra/?locale=pt_PT" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/igreja.baptista.coimbra/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@igrejabaptistacoimbraportugal" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#cultos">Cultos</a></li>
+                    <li><a href="#ministerios">Ministérios</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#sermoes">Sermões</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Doações</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Estatutos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Igreja Batista de Coimbra. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('open');
+            document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+        }
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

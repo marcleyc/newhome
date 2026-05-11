@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conheça o Pastor — Dinê Lóta | Igreja Batista da Coimbra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a3a;
+            --primary-light: #2d4a5e;
+            --accent: #c9a96e;
+            --accent-hover: #b8965a;
+            --text: #2c3e50;
+            --text-light: #6b7b8d;
+            --bg: #fafbfc;
+            --white: #ffffff;
+            --cream: #f5f0e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 42, 58, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1920&q=80') center/cover;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-section {
+            padding: 5rem 5%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-header .tag {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary-light));
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0.3rem;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--accent);
+            transform: translateX(-6.5px);
+        }
+
+        .timeline-item.highlight::before {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px var(--accent);
+            transform: translateX(-8.5px);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 1.8rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+        }
+
+        .timeline-content p {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .timeline-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== PHOTO BLOCKS ===== */
+        .photo-block {
+            margin: 3rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .photo-block img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-block:hover img {
+            transform: scale(1.02);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(26,42,58,0.9), transparent);
+            color: var(--white);
+        }
+
+        .photo-caption p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* ===== FAMILY PHOTO ===== */
+        .family-section {
+            background: var(--cream);
+            padding: 4rem 5%;
+            margin: 3rem -5%;
+        }
+
+        .family-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .family-photo {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .family-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 350px;
+        }
+
+        .family-text {
+            padding: 1rem;
+        }
+
+        .family-text .tag {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .family-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .family-text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* ===== INSTAGRAM ===== */
+        .instagram-section {
+            text-align: center;
+            padding: 3rem 5%;
+            background: var(--white);
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+        }
+
+        .instagram-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4);
+        }
+
+        .instagram-link img {
+            width: 28px;
+            height: 28px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* ===== CURRENT ROLE ===== */
+        .current-role {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 5rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .current-role::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1920&q=80') center/cover;
+            opacity: 0.15;
+        }
+
+        .current-role-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .current-role .tag {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .current-role h2 {
+            color: var(--white);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .current-role p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .current-role .verse {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .timeline { padding-left: 2rem; }
+            .timeline-item::before { left: -2rem; transform: translateX(-6.5px); }
+            .family-grid { grid-template-columns: 1fr; }
+            .family-photo { order: -1; }
+            .hero { min-height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:28px;height:28px;">
+                <path d="/img/logo.svg" />
+            </svg>
+            Igreja Batista de Coimbra
+        </a>
+        <object type="image/svg+xml" data="/img/logo.svg"></object>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#cultos">Cultos</a></li>
+            <li><a href="index.html#ministerios">Ministérios</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <p class="hero-subtitle">A Nossa História</p>
+            <h1>Conheça o Pastor</h1>
+            <p>O percurso de fé e chamado de Dinê Lóta — desde o Brasil até Portugal, servindo a Jesus com dedicação.</p>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-header">
+            <p class="tag">Percurso de Vida</p>
+            <h2>Linha do Tempo</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <span class="timeline-year">1978</span>
+                <div class="timeline-content">
+                    <p><strong>Dinê Lóta nasce no Brasil</strong>, dando início a uma jornada de fé que o levaria por dois continentes.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-year">1980</span>
+                <div class="timeline-content">
+                    <p><strong>Muda-se com a família para Portugal</strong>, onde passa a sua infância e os primeiros anos de formação espiritual.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item highlight">
+                <span class="timeline-year">1985</span>
+                <div class="timeline-content">
+                    <p><strong>Aos 7 anos, entrega a sua vida a Jesus.</strong> Um ano depois, aos 8 anos, é <strong>batizado</strong>, selando publicamente a sua fé.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-year">1990</span>
+                <div class="timeline-content">
+                    <p><strong>Aos 12 anos, volta com a família para o Brasil</strong>, retornando à terra natal para continuar o seu crescimento espiritual.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item highlight">
+                <span class="timeline-year">1993</span>
+                <div class="timeline-content">
+                    <p><strong>Aos 15 anos, compreende que Deus o chama para o ministério pastoral.</strong> Um momento decisivo que moldaria todo o seu futuro.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-year">2003</span>
+                <div class="timeline-content">
+                    <p>Depois de alguns anos de luta e discernimento em relação ao chamado, <strong>matricula-se no Seminário Teológico Batista do Sul do Brasil</strong>, dando o primeiro passo formal na preparação ministerial.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-year">2007</span>
+                <div class="timeline-content">
+                    <p><strong>Conclui o Bacharel em Teologia</strong> após quatro anos de estudo dedicado.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAMILY SECTION -->
+    <section class="family-section">
+        <div class="family-grid">
+            <div class="family-photo">
+                <img src="https://igrejabaptistacoimbra.notion.site/image/attachment%3A482199b4-c503-4bf2-89a0-b9d8fea01b1a%3A8b0c764a-dd5f-4a46-beb3-149aba670a1e.jpg?table=block&id=fc9a574d-64b5-4b0d-92fd-fcb03993e267&spaceId=88050ebf-7eaa-495b-8f91-032d32b37d3a&width=640&userId=&cache=v2" alt="Dinê Lóta" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80'">
+            </div>
+            <div class="family-text">
+                <p class="tag">Família</p>
+                <h3>Uma Vida a Dois</h3>
+                <p><strong>Casa-se com Rose Lóta em 2005.</strong> Uma união construída sobre a rocha da fé, que o acompanha em cada passo do ministério.</p>
+                <p>É <strong>ordenado ao ministério pastoral em 2007</strong>, ano em que assume o pastorado adjunto da <strong>Primeira Igreja Batista de Manaus, Brasil</strong>, onde serve fielmente até 2013.</p>
+                <p style="color: var(--accent); font-weight: 500;">A sua filha <strong>Ana Clara</strong> nasce em 2011, trazendo nova alegria à família.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section class="instagram-section">
+        <a href="https://www.instagram.com/dine_lota/" target="_blank" class="instagram-link">
+            <i class="fab fa-instagram"></i>
+            @Dine_Lota
+        </a>
+    </section>
+
+    <!-- SECOND FAMILY PHOTO -->
+    <section class="timeline-section" style="padding-top: 2rem;">
+        <div class="photo-block">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200&q=80" alt="Família Lóta" onerror="this.style.display='none'">
+            <div class="photo-caption">
+                <p>"Educa a criança no caminho em que deve andar..." — Provérbios 22:6</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSIONARY TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-header">
+            <p class="tag">Missões</p>
+            <h2>O Chamado Missionário</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item highlight">
+                <span class="timeline-year">2014</span>
+                <div class="timeline-content">
+                    <p><strong>Apresenta-se com a família à Junta de Missões Mundiais da Convenção Batista Brasileira</strong> para o trabalho missionário em Portugal. Um passo de fé enorme, retornando ao país onde cresceu.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-year">2015</span>
+                <div class="timeline-content">
+                    <p><strong>É enviado para terras lusas</strong>, indo servir junto à <strong>missão batista de Guimarães</strong>, em cooperação com a <strong>Igreja Evangélica Baptista de Braga</strong>.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-year">2018</span>
+                <div class="timeline-content">
+                    <p>Em Guimarães, nasce a sua <strong>segunda filha, Larissa</strong>, completando a família com mais uma bênção.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item highlight">
+                <span class="timeline-year">2021</span>
+                <div class="timeline-content">
+                    <p><strong>Recebe o convite da Igreja Evangélica Baptista de Coimbra para ser o seu pastor.</strong> Aceita o chamado e, desde então, serve a Jesus e à comunidade de Coimbra com dedicação e amor.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CURRENT ROLE -->
+    <section class="current-role">
+        <div class="current-role-content">
+            <p class="tag">Hoje</p>
+            <h2>Servindo em Coimbra</h2>
+            <p>Desde 2021, o pastor Dinê Lóta lidera a <strong>Igreja Evangélica Baptista de Coimbra</strong>, continuando o legado missionário que começou em Guimarães. Com a sua família ao lado — Rose, Ana Clara e Larissa — segue firme no chamado de fazer discípulos e edificar a Igreja em Portugal.</p>
+            <div class="verse">
+                "Ide, portanto, fazei discípulos de todas as nações..."<br>
+                <span style="font-size: 0.9rem; opacity: 0.7;">— Mateus 28:19</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Igreja Batista de Coimbra — Portugal &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
