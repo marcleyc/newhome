@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Mediador · Dark · Local + Supabase</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js">
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #0d1117;
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+            min-height: 100vh;
+        }
+        #app {
+            max-width: 600px;
+            width: 100%;
+            background: #161b22;
+            border-radius: 32px;
+            padding: 16px 14px 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            color: #e6edf3;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #30363d;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #f0f6fc;
+        }
+        .header h1 small {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #8b949e;
+            background: #21262d;
+            padding: 2px 10px;
+            border-radius: 30px;
+        }
+        .user-badge {
+            background: #21262d;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #c9d1d9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #30363d;
+        }
+        .user-badge button {
+            background: transparent;
+            border: none;
+            color: #f85149;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: #0d1117;
+            padding: 12px 14px;
+            border-radius: 24px;
+            margin-bottom: 18px;
+            border: 1px solid #30363d;
+            align-items: center;
+        }
+        .search-box {
+            flex: 1 1 140px;
+            display: flex;
+            align-items: center;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 40px;
+            padding: 0 12px;
+        }
+        .search-box:focus-within {
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            color: #e6edf3;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        .search-box input::placeholder {
+            color: #484f58;
+        }
+        .btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: #c9d1d9;
+            cursor: pointer;
+            transition: 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: #238636;
+            border-color: #238636;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2ea043;
+            transform: scale(0.97);
+        }
+        .btn-outline {
+            background: transparent;
+            border-color: #30363d;
+        }
+        .btn-outline:hover {
+            background: #21262d;
+        }
+        .btn-danger {
+            border-color: #f85149;
+            color: #f85149;
+        }
+        .btn-danger:hover {
+            background: #2d1b1e;
+        }
+        .btn-success {
+            border-color: #238636;
+            color: #7ee08a;
+        }
+        .btn-success:hover {
+            background: #1b2d1b;
+        }
+        .btn-warning {
+            border-color: #d29922;
+            color: #d29922;
+        }
+        .btn-warning:hover {
+            background: #2d2416;
+        }
+        .badge-count {
+            background: #21262d;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #8b949e;
+        }
+        .grid-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 6px;
+        }
+        .card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 24px;
+            padding: 14px 16px;
+        }
+        .card:hover {
+            border-color: #484f58;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .card-id {
+            background: #21262d;
+            padding: 0 12px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            color: #8b949e;
+        }
+        .card-flags {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+        .card-flags span {
+            background: #21262d;
+            padding: 2px 10px;
+            border-radius: 30px;
+        }
+        .card-link {
+            background: #161b22;
+            padding: 6px 12px;
+            border-radius: 16px;
+            border: 1px solid #30363d;
+            margin: 6px 0 10px;
+            word-break: break-all;
+        }
+        .card-link a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .card-link a:hover {
+            text-decoration: underline;
+        }
+        .detalhes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 10px;
+            background: #161b22;
+            padding: 10px 12px;
+            border-radius: 18px;
+            border: 1px solid #30363d;
+            font-size: 0.8rem;
+            margin: 8px 0;
+        }
+        .detalhes-grid .label {
+            color: #8b949e;
+        }
+        .detalhes-grid .valor {
+            font-weight: 500;
+            color: #f0f6fc;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #21262d;
+            padding: 0 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            text-transform: capitalize;
+            color: #c9d1d9;
+        }
+        .card-obs {
+            background: #161b22;
+            padding: 6px 12px;
+            border-radius: 16px;
+            border: 1px solid #30363d;
+            font-size: 0.8rem;
+            color: #b1bac4;
+            margin: 6px 0;
+        }
+        .card-detalhes {
+            background: #161b22;
+            padding: 6px 12px;
+            border-radius: 16px;
+            border: 1px solid #30363d;
+            font-size: 0.8rem;
+            color: #b1bac4;
+            margin: 6px 0;
+        }
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .card-actions .btn {
+            flex: 1 0 auto;
+            justify-content: center;
+            padding: 6px 8px;
+            font-size: 0.75rem;
+        }
+        .vazio {
+            text-align: center;
+            padding: 40px 10px;
+            color: #484f58;
+            background: #0d1117;
+            border-radius: 40px;
+            border: 1px dashed #30363d;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+        .modal-box {
+            background: #161b22;
+            max-width: 480px;
+            width: 100%;
+            padding: 24px 20px;
+            border-radius: 32px;
+            border: 1px solid #30363d;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+        }
+        .modal-box h2 {
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+        }
+        .modal-box label {
+            display: block;
+            font-weight: 500;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+        .modal-box input,
+        .modal-box select,
+        .modal-box textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            margin-top: 4px;
+            color: #e6edf3;
+            font-size: 0.9rem;
+        }
+        .modal-box input:focus,
+        .modal-box select:focus,
+        .modal-box textarea:focus {
+            border-color: #58a6ff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+        .modal-box textarea {
+            resize: vertical;
+        }
+        .modal-check {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .modal-check label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 400;
+            color: #c9d1d9;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            justify-content: flex-end;
+        }
+        .btn-secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+        .login-box {
+            background: #161b22;
+            padding: 30px 20px;
+            border-radius: 32px;
+            border: 1px solid #30363d;
+            text-align: center;
+            max-width: 380px;
+            margin: 20px auto;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 40px;
+            color: #e6edf3;
+            margin: 8px 0;
+        }
+        .login-box .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+        }
+        .erro-box {
+            background: #2d1b1e;
+            border: 1px solid #f85149;
+            color: #f85149;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .sucesso-box {
+            background: #1b2d1b;
+            border: 1px solid #238636;
+            color: #7ee08a;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+        .status-local {
+            font-size: 0.7rem;
+            color: #8b949e;
+            background: #21262d;
+            padding: 2px 10px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .status-sync {
+            font-size: 0.7rem;
+            color: #7ee08a;
+            background: #1b2d1b;
+            padding: 2px 10px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        @media (max-width: 480px) {
+            #app {
+                padding: 12px 10px;
+            }
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .detalhes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- LOGIN -->
+        <div v-if="!usuarioLogado" class="login-box">
+            <h2 style="color:#f0f6fc; margin-bottom:8px;">🔐 Acesso</h2>
+            <p style="color:#8b949e; font-size:0.9rem;">Digite seu e-mail para acessar seus imóveis</p>
+            <input type="email" v-model="emailLogin" placeholder="seu@email.com" @keyup.enter="login" />
+            <button class="btn btn-primary" @click="login">Entrar</button>
+            <div style="margin-top:12px; color:#484f58; font-size:0.7rem;">Os dados são salvos localmente primeiro</div>
+            <div v-if="erroLogin" class="erro-box">{{ erroLogin }}</div>
+        </div>
+
+        <!-- APP -->
+        <div v-else>
+            <div class="header">
+                <h1>🏠 <span style="font-size:1rem;">Mediação</span><small>local</small></h1>
+                <div class="user-badge">
+                    {{ usuarioLogado }}
+                    <button @click="logout">sair</button>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="search-box">
+                    <span style="color:#484f58;">🔍</span>
+                    <input type="text" placeholder="Buscar..." v-model="filtroBusca" />
+                </div>
+                <span class="badge-count">{{ imoveisFiltrados.length }}</span>
+                <button class="btn btn-primary" @click="abrirModalNovo">➕</button>
+                <button class="btn btn-outline" @click="carregarDoLocal" style="font-size:0.7rem;">↻</button>                
+                <button class="btn btn-success" @click="sincronizarComSupabase" style="font-size:0.7rem;" :disabled="sincronizando">
+                    ☁️ {{ sincronizando ? '...' : 'Sync' }}
+                </button>
+            </div>
+
+            <div style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+                <span class="status-local" v-if="modoLocal">📁 Modo Local</span>
+                <span class="status-sync" v-if="dadosSincronizados">✅ Sincronizado</span>
+                <span class="status-local" v-if="!dadosSincronizados && !modoLocal">⏳ Pendente</span>
+            </div>
+
+            <div v-if="erroApp" class="erro-box">{{ erroApp }}</div>
+            <div v-if="msgSucesso" class="sucesso-box">{{ msgSucesso }}</div>
+
+            <div class="grid-cards">
+                <div v-for="item in imoveisFiltrados" :key="item.id" class="card">
+                    <div class="card-header">
+                        <span class="card-id">#{{ item.id }}</span>
+                        <div class="card-flags">
+                            <span v-if="item.gostou">⭐</span>
+                            <span v-if="item.visita">📅</span>
+                            <span v-if="item.sync" style="font-size:0.6rem; background:#1b2d1b; color:#7ee08a;">☁️</span>
+                        </div>
+                    </div>
+                    <div class="card-link">
+                        <a :href="item.link" target="_blank" rel="noopener">{{ item.link || 'sem link' }}</a>
+                    </div>
+                    <div class="detalhes-grid">
+                        <span class="label">💰 Valor</span><span class="valor">{{ item.valor || '—' }}</span>
+                        <span class="label">👤 Mediador</span><span>{{ item.mediador || '—' }}</span>
+                        <span class="label">📌 Situação</span><span><span class="status-badge">{{ item.situacao || '—' }}</span></span>
+                        <span class="label">❤️ Gostou</span><span>{{ item.gostou ? 'Sim' : 'Não' }}</span>
+                        <span class="label">📅 Visita</span><span>{{ item.visita ? 'Sim' : 'Não' }}</span>
+                    </div>
+                    <div class="card-detalhes" v-if="item.detalhes">📋 {{ item.detalhes }}</div>
+                    <div class="card-obs" v-if="item.obs">📝 {{ item.obs }}</div>
+                    <div class="card-actions">
+                        <button class="btn btn-outline" @click="editarItem(item)">✏️</button>
+                        <button class="btn btn-danger" @click="excluirItem(item.id)">🗑️</button>
+                    </div>
+                </div>
+                <div v-if="imoveisFiltrados.length === 0" class="vazio">
+                    <div style="font-size:2rem;">🏚️</div>
+                    <p>Nenhum imóvel. Adicione um novo!</p>
+                </div>
+            </div>
+
+            <!-- MODAL -->
+            <div v-if="modalAtivo" class="modal-overlay" @click.self="fecharModal">
+                <div class="modal-box">
+                    <h2>{{ editandoId ? '✏️ Editar' : '➕ Novo' }}</h2>
+                    <label>Link (URL)</label>
+                    <input v-model="form.link" placeholder="https://exemplo.com" />
+                    <label>Valor</label>
+                    <input v-model="form.valor" placeholder="€ 500.000" />
+                    <div class="modal-check">
+                        <label><input type="checkbox" v-model="form.gostou" /> Gostou</label>
+                        <label><input type="checkbox" v-model="form.visita" /> Visita</label>
+                    </div>
+                    <label>Mediador</label>
+                    <input v-model="form.mediador" placeholder="Nome" />
+                    <label>Situação</label>
+                    <select v-model="form.situacao">
+                        <option value="">Selecione</option>
+                        <option value="disponível">Disponível</option>
+                        <option value="negociação">Negociação</option>
+                        <option value="vendido">Vendido</option>
+                        <option value="reservado">Reservado</option>
+                    </select>
+                    <label>Detalhes</label>
+                    <input v-model="form.detalhes" placeholder="Detalhes adicionais" />
+                    <label>Observação</label>
+                    <textarea v-model="form.obs" rows="2" placeholder="Obs…"></textarea>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" @click="fecharModal">Cancelar</button>
+                        <button class="btn btn-primary" @click="salvarItem">💾 Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ===== CONFIGURAÇÃO DO SUPABASE =====
+            const SUPABASE_URL = 'https://dfwoztvixdgelovyztuy.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_9VTXpWLNfvhQxUJMVI9lnQ_LJJYqeAp';
+
+            let supabaseClient = null;
+            let supabaseConfigurado = false;
+
+            try {
+                supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                supabaseConfigurado = true;
+                console.log('✅ Supabase configurado com sucesso!');
+            } catch (e) {
+                console.warn('⚠️ Erro ao configurar Supabase:', e);
+            }
+
+            const STORAGE_KEY = 'imoveis_local';
+
+            new Vue({
+                el: '#app',
+                data: {
+                    usuarioLogado: null,
+                    emailLogin: '',
+                    imoveis: [],
+                    filtroBusca: '',
+                    modalAtivo: false,
+                    editandoId: null,
+                    erroLogin: null,
+                    erroApp: null,
+                    msgSucesso: null,
+                    modoLocal: true,
+                    dadosSincronizados: false,
+                    sincronizando: false,
+                    form: {
+                        link: '',
+                        valor: '',
+                        gostou: false,
+                        visita: false,
+                        mediador: '',
+                        situacao: '',
+                        detalhes: '',
+                        obs: ''
+                    }
+                },
+                computed: {
+                    imoveisFiltrados() {
+                        const busca = this.filtroBusca.toLowerCase().trim();
+                        if (!busca) return this.imoveis;
+                        return this.imoveis.filter(i =>
+                            (i.link || '').toLowerCase().includes(busca) ||
+                            (i.mediador || '').toLowerCase().includes(busca) ||
+                            (i.obs || '').toLowerCase().includes(busca) ||
+                            (i.detalhes || '').toLowerCase().includes(busca)
+                        );
+                    }
+                },
+                methods: {
+                    // ===== LOGIN =====
+                    login() {
+                        this.erroLogin = null;
+                        if (!this.emailLogin.trim()) {
+                            this.erroLogin = 'Digite um e-mail válido';
+                            return;
+                        }
+                        this.usuarioLogado = this.emailLogin.trim();
+                        this.carregarDoLocal();
+                    },
+                    logout() {
+                        this.usuarioLogado = null;
+                        this.emailLogin = '';
+                        this.imoveis = [];
+                        this.erroApp = null;
+                        this.msgSucesso = null;
+                        this.modoLocal = true;
+                        this.dadosSincronizados = false;
+                    },
+
+                    // ===== LOCAL STORAGE =====
+                    salvarNoLocal() {
+                        const dados = {
+                            email: this.usuarioLogado,
+                            imoveis: this.imoveis,
+                            sincronizado: this.dadosSincronizados
+                        };
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
+                    },
+
+                    carregarDoLocal() {
+                        this.erroApp = null;
+                        this.msgSucesso = null;
+
+                        try {
+                            const dadosSalvos = localStorage.getItem(STORAGE_KEY);
+                            if (dadosSalvos) {
+                                const dados = JSON.parse(dadosSalvos);
+                                if (dados.email === this.usuarioLogado) {
+                                    this.imoveis = dados.imoveis || [];
+                                    this.dadosSincronizados = dados.sincronizado || false;
+                                    this.modoLocal = true;
+                                    return;
+                                }
+                            }
+                            // Se não tem dados ou é outro usuário
+                            this.imoveis = [];
+                            this.dadosSincronizados = false;
+                            this.modoLocal = true;
+                            this.salvarNoLocal();
+                        } catch (e) {
+                            console.error('Erro ao carregar local:', e);
+                            this.imoveis = [];
+                            this.salvarNoLocal();
+                        }
+                    },
+
+                    // ===== CRUD LOCAL =====
+                    salvarItem() {
+                        this.erroApp = null;
+                        this.msgSucesso = null;
+
+                        if (!this.form.link.trim()) {
+                            alert('Link é obrigatório');
+                            return;
+                        }
+
+                        const novoItem = {
+                            link: this.form.link.trim(),
+                            valor: this.form.valor.trim() || '—',
+                            gostou: !!this.form.gostou,
+                            visita: !!this.form.visita,
+                            mediador: this.form.mediador.trim() || '—',
+                            situacao: this.form.situacao || '—',
+                            detalhes: this.form.detalhes.trim() || '',
+                            obs: this.form.obs.trim() || '',
+                            sync: false,
+                            id_supabase: null
+                        };
+
+                        if (this.editandoId) {
+                            const index = this.imoveis.findIndex(i => i.id === this.editandoId);
+                            if (index !== -1) {
+                                this.imoveis[index] = { ...this.imoveis[index], ...novoItem, sync: false };
+                            }
+                        } else {
+                            const maxId = this.imoveis.reduce((max, i) => Math.max(max, i.id || 0), 0);
+                            novoItem.id = maxId + 1;
+                            this.imoveis.push(novoItem);
+                        }
+
+                        this.dadosSincronizados = false;
+                        this.salvarNoLocal();
+                        this.fecharModal();
+                        this.msgSucesso = '✅ Imóvel salvo localmente!';
+                    },
+
+                    excluirItem(id) {
+                        if (!confirm('Excluir imóvel?')) return;
+                        this.imoveis = this.imoveis.filter(i => i.id !== id);
+                        this.dadosSincronizados = false;
+                        this.salvarNoLocal();
+                        this.msgSucesso = '✅ Imóvel excluído!';
+                    },
+
+                    abrirModalNovo() {
+                        this.editandoId = null;
+                        this.form = {
+                            link: '',
+                            valor: '',
+                            gostou: false,
+                            visita: false,
+                            mediador: '',
+                            situacao: '',
+                            detalhes: '',
+                            obs: ''
+                        };
+                        this.modalAtivo = true;
+                    },
+
+                    editarItem(item) {
+                        this.editandoId = item.id;
+                        this.form = {
+                            link: item.link || '',
+                            valor: item.valor || '',
+                            gostou: !!item.gostou,
+                            visita: !!item.visita,
+                            mediador: item.mediador || '',
+                            situacao: item.situacao || '',
+                            detalhes: item.detalhes || '',
+                            obs: item.obs || ''
+                        };
+                        this.modalAtivo = true;
+                    },
+
+                    fecharModal() {
+                        this.modalAtivo = false;
+                        this.editandoId = null;
+                    },
+
+                    // ===== CORRIGIR TABELA =====
+                    corrigirTabela() {
+                        this.erroApp = null;
+                        this.msgSucesso = null;
+
+                        this.erroApp = 
+                            '📋 Para corrigir, execute este SQL no SQL Editor do Supabase:\n\n' +
+                            '-- 1. DROP da tabela existente\n' +
+                            'DROP TABLE IF EXISTS imoveis CASCADE;\n\n' +
+                            '-- 2. Cria a tabela com TODAS as colunas\n' +
+                            'CREATE TABLE imoveis (\n' +
+                            '    id BIGINT PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,\n' +
+                            '    link TEXT NOT NULL,\n' +
+                            '    valor TEXT,\n' +
+                            '    gostou BOOLEAN DEFAULT false,\n' +
+                            '    visita BOOLEAN DEFAULT false,\n' +
+                            '    mediador TEXT,\n' +
+                            '    situacao TEXT,\n' +
+                            '    detalhes TEXT,\n' +
+                            '    obs TEXT,\n' +
+                            '    cliente_email TEXT NOT NULL,\n' +
+                            '    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()\n' +
+                            ');\n\n' +
+                            '-- 3. Índices\n' +
+                            'CREATE INDEX idx_cliente_email ON imoveis(cliente_email);\n' +
+                            'CREATE INDEX idx_situacao ON imoveis(situacao);\n\n' +
+                            '-- 4. Habilita RLS\n' +
+                            'ALTER TABLE imoveis ENABLE ROW LEVEL SECURITY;\n\n' +
+                            '-- 5. Políticas (permitir tudo para testes - depois você pode restringir)\n' +
+                            'CREATE POLICY "Permitir tudo" ON imoveis\n' +
+                            '    FOR ALL\n' +
+                            '    USING (true)\n' +
+                            '    WITH CHECK (true);';
+                    },
+
+                    // ===== SINCRONIZAR COM SUPABASE =====
+                    async sincronizarComSupabase() {
+                        if (this.sincronizando) return;
+
+                        this.erroApp = null;
+                        this.msgSucesso = null;
+
+                        if (!supabaseConfigurado || !supabaseClient) {
+                            this.erroApp = '❌ Supabase não configurado. Verifique as credenciais.';
+                            return;
+                        }
+
+                        if (this.imoveis.length === 0) {
+                            this.erroApp = '⚠️ Nenhum imóvel para sincronizar.';
+                            return;
+                        }
+
+                        this.sincronizando = true;
+
+                        try {
+                            // Sincroniza cada imóvel
+                            let sucessos = 0;
+                            let erros = 0;
+                            let detalhesErros = [];
+
+                            for (const item of this.imoveis) {
+                                try {
+                                    const payload = {
+                                        link: item.link,
+                                        valor: item.valor || '—',
+                                        gostou: !!item.gostou,
+                                        visita: !!item.visita,
+                                        mediador: item.mediador || '—',
+                                        situacao: item.situacao || '—',
+                                        detalhes: item.detalhes || '',
+                                        obs: item.obs || '',
+                                        cliente_email: this.usuarioLogado
+                                    };
+
+                                    let result;
+
+                                    if (item.sync && item.id_supabase) {
+                                        // Atualiza
+                                        result = await supabaseClient
+                                            .from('imoveis')
+                                            .update(payload)
+                                            .eq('id', item.id_supabase)
+                                            .eq('cliente_email', this.usuarioLogado);
+                                    } else {
+                                        // Insere
+                                        result = await supabaseClient
+                                            .from('imoveis')
+                                            .insert([payload])
+                                            .select();
+                                    }
+
+                                    if (result.error) {
+                                        erros++;
+                                        detalhesErros.push(`Item #${item.id}: ${result.error.message}`);
+                                    } else {
+                                        sucessos++;
+                                        item.sync = true;
+                                        if (result.data && result.data.length > 0) {
+                                            item.id_supabase = result.data[0].id;
+                                        }
+                                    }
+
+                                } catch (err) {
+                                    erros++;
+                                    detalhesErros.push(`Item #${item.id}: ${err.message}`);
+                                }
+                            }
+
+                            // Salva o estado atualizado
+                            this.dadosSincronizados = (erros === 0);
+                            this.modoLocal = (erros > 0);
+                            this.salvarNoLocal();
+
+                            // Mostra resultado
+                            if (erros === 0) {
+                                this.msgSucesso = `✅ ${sucessos} imóveis sincronizados com sucesso!`;
+                            } else {
+                                let msg = `⚠️ ${sucessos} sincronizados, ${erros} com erro.\n\n`;
+                                msg += `Detalhes dos erros:\n${detalhesErros.join('\n')}`;
+                                this.erroApp = msg;
+                            }
+
+                        } catch (err) {
+                            this.erroApp = '❌ Erro na sincronização: ' + err.message;
+                            console.error(err);
+                        } finally {
+                            this.sincronizando = false;
+                        }
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
